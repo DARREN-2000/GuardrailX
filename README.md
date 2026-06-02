@@ -98,3 +98,21 @@ PRs welcome. Keep changes focused and add tests for behavior changes.
 ## License
 
 See the `LICENSE` file.
+
+## Local end-to-end with Docker Compose
+
+Bring up Postgres, the backend, and a static frontend build with Docker Compose (from the repository root):
+
+```bash
+cd infrastructure/compose
+docker compose up --build
+```
+
+- Backend will be available at `http://localhost:8000`.
+- Frontend static build served at `http://localhost:5173`.
+
+Notes:
+- Compose sets `OTEL_ENABLED=false` for the backend to avoid requiring tracing exporters during local runs.
+- The backend uses `DATABASE_URL=postgresql+asyncpg://guardrailx:guardrailx@db:5432/guardrailx` by default; update `backend/.env` if you need different credentials.
+
+If you'd like, I can add a `Makefile` or `docker-entrypoint` scripts to run migrations automatically on container startup.
