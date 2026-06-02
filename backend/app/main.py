@@ -17,14 +17,18 @@ from app.observability import configure_otel
 async def lifespan(app: FastAPI):
 	settings = get_settings()
 	configure_logging(settings)
-	configure_otel(settings=settings, app=app, engine=get_engine())
+	engine = None
+	if settings.otel_enabled:
+		engine = get_engine()
+	configure_otel(settings=settings, app=app, engine=engine)
 	logger = get_logger(__name__)
 	logger.info("starting application", extra={"service": settings.app_name, "environment": settings.environment})
 	try:
 		yield
 	finally:
 		logger.info("shutting down application")
-		await get_engine().dispose()
+		if engine is not None:
+			await engine.dispose()
 
 
 def create_app() -> FastAPI:

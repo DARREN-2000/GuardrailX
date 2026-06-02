@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from sqlalchemy import Enum as SAEnum
+from sqlalchemy import Enum as SAEnum, String
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -13,8 +13,8 @@ from app.models.base import TenantStatus, TimestampMixin, UUIDPrimaryKeyMixin
 class Tenant(Base, UUIDPrimaryKeyMixin, TimestampMixin):
     __tablename__ = "tenants"
 
-    slug: Mapped[str] = mapped_column(length=80, unique=True, nullable=False)
-    name: Mapped[str] = mapped_column(length=200, nullable=False)
+    slug: Mapped[str] = mapped_column(String(80), unique=True, nullable=False)
+    name: Mapped[str] = mapped_column(String(200), nullable=False)
     status: Mapped[TenantStatus] = mapped_column(
         SAEnum(TenantStatus, name="tenant_status", native_enum=True),
         nullable=False,
