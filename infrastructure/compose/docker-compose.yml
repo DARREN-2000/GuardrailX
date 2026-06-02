@@ -31,6 +31,10 @@ services:
 		ports:
 			- "8000:8000"
 		restart: unless-stopped
+		healthcheck:
+			test: ["CMD-SHELL", "curl -f http://localhost:8000/api/v1/health/live || exit 1"]
+			interval: 5s
+			retries: 12
 
 	frontend:
 		build:
