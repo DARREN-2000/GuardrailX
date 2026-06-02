@@ -3,10 +3,9 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends
 
 from app.core.config import Settings
-from app.core.dependencies import get_settings
+from app.core.dependencies import get_health_service, get_settings
 from app.schemas.health import HealthResponse
 from app.services.health import HealthService
-from app.core.dependencies import get_health_service
 
 router = APIRouter(prefix="/health", tags=["health"])
 

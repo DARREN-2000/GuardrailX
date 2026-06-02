@@ -7,7 +7,6 @@ from uuid import UUID
 from app.db.base import Base
 from app.repositories.base import SQLAlchemyRepository
 
-
 ModelType = TypeVar("ModelType", bound=Base)
 
 

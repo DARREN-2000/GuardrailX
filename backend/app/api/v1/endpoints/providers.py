@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import APIRouter, Depends, HTTPException, status
 
 from app.core.dependencies import get_provider_service
 from app.schemas.providers import ProviderListResponse, ProviderSummary

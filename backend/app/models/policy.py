@@ -2,11 +2,17 @@ from __future__ import annotations
 
 import uuid
 
-from sqlalchemy import Enum as SAEnum, ForeignKey, Index, String, Text, UniqueConstraint
+from sqlalchemy import Enum as SAEnum
+from sqlalchemy import ForeignKey, Index, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base
-from app.models.base import PolicyStatus, TimestampMixin, TenantScopedMixin, UUIDPrimaryKeyMixin
+from app.models.base import (
+    PolicyStatus,
+    TenantScopedMixin,
+    TimestampMixin,
+    UUIDPrimaryKeyMixin,
+)
 
 
 class Policy(Base, UUIDPrimaryKeyMixin, TenantScopedMixin, TimestampMixin):

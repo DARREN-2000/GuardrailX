@@ -8,7 +8,6 @@ from typing import Any
 
 from app.core.config import Settings
 
-
 request_id_context: contextvars.ContextVar[str | None] = contextvars.ContextVar("request_id", default=None)
 
 

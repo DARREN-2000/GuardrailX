@@ -2,12 +2,19 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from sqlalchemy import Boolean, DateTime, Enum as SAEnum, Index, String, UniqueConstraint
+from sqlalchemy import Boolean, DateTime, Index, String, UniqueConstraint
+from sqlalchemy import Enum as SAEnum
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base
-from app.models.base import TimestampMixin, TenantScopedMixin, UserRole, UserStatus, UUIDPrimaryKeyMixin
+from app.models.base import (
+    TenantScopedMixin,
+    TimestampMixin,
+    UserRole,
+    UserStatus,
+    UUIDPrimaryKeyMixin,
+)
 
 
 class User(Base, UUIDPrimaryKeyMixin, TenantScopedMixin, TimestampMixin):

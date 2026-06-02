@@ -2,7 +2,8 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from sqlalchemy import Boolean, DateTime, Enum as SAEnum, Index, Integer, String, Text, UniqueConstraint
+from sqlalchemy import Boolean, DateTime, Index, Integer, String, Text, UniqueConstraint
+from sqlalchemy import Enum as SAEnum
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -10,8 +11,8 @@ from app.db.base import Base
 from app.models.base import (
     ProviderHealthStatus,
     ProviderType,
-    TimestampMixin,
     TenantScopedMixin,
+    TimestampMixin,
     UUIDPrimaryKeyMixin,
 )
 

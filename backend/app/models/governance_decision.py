@@ -3,12 +3,18 @@ from __future__ import annotations
 import uuid
 from datetime import datetime
 
-from sqlalchemy import DateTime, Enum as SAEnum, ForeignKey, String, Text
+from sqlalchemy import DateTime, ForeignKey, String, Text
+from sqlalchemy import Enum as SAEnum
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base
-from app.models.base import DecisionOutcome, TimestampMixin, TenantScopedMixin, UUIDPrimaryKeyMixin
+from app.models.base import (
+    DecisionOutcome,
+    TenantScopedMixin,
+    TimestampMixin,
+    UUIDPrimaryKeyMixin,
+)
 
 
 class GovernanceDecision(Base, UUIDPrimaryKeyMixin, TenantScopedMixin, TimestampMixin):

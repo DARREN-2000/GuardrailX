@@ -5,8 +5,8 @@ os.environ.setdefault("OTEL_ENABLED", "false")
 
 from fastapi.testclient import TestClient
 
-from app.main import create_app
 from app.core.dependencies import get_health_service
+from app.main import create_app
 
 
 class DummyHealthService:
