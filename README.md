@@ -8,6 +8,22 @@
 
 GuardrailX is a starter framework for building guardrails around LLM-driven applications. It includes a FastAPI backend, a Vite + React frontend, infrastructure scaffolding, and policy templates.
 
+## High-Level Architecture
+
+![Architecture](assets/architecture.svg)
+
+## Core Modules
+
+![Core Modules](assets/core-modules.svg)
+
+## Policy Engine
+
+![Policy Engine](assets/policy-engine.svg)
+
+## Audit Platform
+
+![Audit Platform](assets/audit.svg)
+
 **Current status**
 
 - Backend health tests pass locally (I ran `backend/tests/test_health.py`).
