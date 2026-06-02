@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" height="auto" role="img" aria-label="GuardrailX animated header">
+  <defs>
+    <linearGradient id="g" x1="0%" x2="100%">
+      <stop offset="0%" stop-color="#6EE7B7">
+        <animate attributeName="stop-color" dur="6s" values="#6EE7B7;#60A5FA;#F472B6;#6EE7B7" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#60A5FA">
+        <animate attributeName="stop-color" dur="6s" values="#60A5FA;#F472B6;#6EE7B7;#60A5FA" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#F472B6">
+        <animate attributeName="stop-color" dur="6s" values="#F472B6;#6EE7B7;#60A5FA;#F472B6" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#6EE7B7" stop-opacity="0.9" />
+      <stop offset="60%" stop-color="#6EE7B7" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="420" rx="12" fill="#0b1220" />
+
+  <!-- animated glow -->
+  <circle cx="600" cy="210" r="180" fill="url(#glow)">
+    <animate attributeName="r" dur="10s" values="160;200;160" repeatCount="indefinite" />
+  </circle>
+
+  <!-- rotating rings -->
+  <g stroke="url(#g)" stroke-width="2" fill="none" opacity="0.32">
+    <circle cx="600" cy="210" r="220" stroke-dasharray="6 12">
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="22s" from="0 600 210" to="360 600 210" repeatCount="indefinite" />
+    </circle>
+    <circle cx="600" cy="210" r="270" stroke-dasharray="4 14">
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="30s" from="360 600 210" to="0 600 210" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- title -->
+  <text x="80" y="140" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial" font-size="64" font-weight="800" fill="url(#g)">GuardrailX</text>
+  <text x="80" y="180" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial" font-size="18" fill="#94a3b8">Policy-driven AI governance runtime — backend + frontend starter</text>
+
+  <!-- floating nodes -->
+  <g>
+    <circle cx="820" cy="120" r="10" fill="#60A5FA" opacity="0.9">
+      <animate attributeName="cy" dur="4s" values="120;90;120" repeatCount="indefinite" />
+      <animate attributeName="cx" dur="6s" values="820;860;820" repeatCount="indefinite" />
+    </circle>
+    <circle cx="960" cy="260" r="8" fill="#F472B6" opacity="0.9">
+      <animate attributeName="cy" dur="3.6s" values="260;230;260" repeatCount="indefinite" />
+      <animate attributeName="cx" dur="5s" values="960;920;960" repeatCount="indefinite" />
+    </circle>
+    <circle cx="420" cy="300" r="6" fill="#6EE7B7" opacity="0.95">
+      <animate attributeName="cy" dur="3.2s" values="300;270;300" repeatCount="indefinite" />
+      <animate attributeName="cx" dur="4.2s" values="420;380;420" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- animated mock terminal box -->
+  <rect x="80" y="220" rx="8" width="420" height="140" fill="#071026" stroke="#0b1330" />
+  <g fill="#94a3b8" font-family="monospace" font-size="13">
+    <text x="100" y="248">$ curl -sS http://localhost:8000/api/v1/health/ready</text>
+    <text x="100" y="272">{</text>
+    <text x="120" y="296">"status": "ok",</text>
+    <text x="120" y="320">"checks": {{"database": "ok"}}</text>
+    <text x="100" y="344">}</text>
+  </g>
+
+  <!-- subtle footer text -->
+  <text x="80" y="398" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial" font-size="12" fill="#6b7280">Open-source • Policy-as-code • Audit trails • Multi-tenant</text>
+</svg>

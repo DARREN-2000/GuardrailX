@@ -3,7 +3,7 @@
 [![CI](https://github.com/DARREN-2000/GuardrailX/actions/workflows/ci.yml/badge.svg)](https://github.com/DARREN-2000/GuardrailX/actions/workflows/ci.yml) [![Pages build](https://github.com/DARREN-2000/GuardrailX/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/DARREN-2000/GuardrailX/actions/workflows/deploy-pages.yml)
 
 <p align="center">
-  ![GuardrailX hero](assets/hero.svg)
+  ![GuardrailX animated header](assets/readme-animated.svg)
 </p>
 
 GuardrailX is a starter framework for building guardrails around LLM-driven applications. It includes a FastAPI backend, a Vite + React frontend, infrastructure scaffolding, and policy templates.
