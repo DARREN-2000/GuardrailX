@@ -23,6 +23,8 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f backend/requirements.txt ]; then pip install -r backend/requirements.txt; fi
           if [ -f backend/requirements-dev.txt ]; then pip install -r backend/requirements-dev.txt; fi
+          # install package in editable mode so tests can import `app`
+          pip install -e backend
 
       - name: Lint backend (ruff)
         run: |
