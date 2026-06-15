@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 240" width="100%" role="img" aria-label="Architecture">
+  <defs>
+    <linearGradient id="a1" x1="0" x2="1">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#6EE7B7" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="8" fill="#071026" />
+  <g fill="#fff" font-family="Inter, Arial, sans-serif">
+    <text x="36" y="48" font-size="28" font-weight="700" fill="url(#a1)">High-Level Architecture</text>
+  </g>
+  <g transform="translate(40,70)">
+    <rect x="0" y="0" width="220" height="48" rx="8" fill="#0b1330" stroke="#16233a" />
+    <text x="16" y="32" fill="#cbd5e1" font-family="Inter, Arial" font-size="14">Enterprise Applications</text>
+
+    <rect x="260" y="0" width="220" height="48" rx="8" fill="#081226" stroke="#16233a" />
+    <text x="276" y="32" fill="#cbd5e1" font-family="Inter, Arial" font-size="14">GuardrailX API</text>
+
+    <rect x="520" y="0" width="220" height="48" rx="8" fill="#081226" stroke="#16233a" />
+    <text x="536" y="32" fill="#cbd5e1" font-family="Inter, Arial" font-size="14">Provider Router</text>
+
+    <g>
+      <line x1="220" y1="24" x2="260" y2="24" stroke="#2b3440" stroke-width="2">
+        <animate attributeName="x2" values="260;240;260" dur="3s" repeatCount="indefinite" />
+      </line>
+    </g>
+  </g>
+</svg>

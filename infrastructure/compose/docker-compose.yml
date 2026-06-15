@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+	db:
+		image: postgres:15
+		environment:
+			POSTGRES_USER: guardrailx
+			POSTGRES_PASSWORD: guardrailx
+			POSTGRES_DB: guardrailx
+		volumes:
+			- db_data:/var/lib/postgresql/data
+		healthcheck:
+			test: ["CMD-SHELL", "pg_isready -U guardrailx -d guardrailx"]
+			interval: 5s
+			retries: 10
+		ports:
+			- "5432:5432"
+
+	backend:
+		build:
+			context: ../../backend
+			dockerfile: Dockerfile
+		env_file:
+			- ../../backend/.env
+		environment:
+			DATABASE_URL: "postgresql+asyncpg://guardrailx:guardrailx@db:5432/guardrailx"
+			OTEL_ENABLED: "false"
+		depends_on:
+			db:
+				condition: service_healthy
+		ports:
+			- "8000:8000"
+		restart: unless-stopped
+		healthcheck:
+			test: ["CMD-SHELL", "curl -f http://localhost:8000/api/v1/health/live || exit 1"]
+			interval: 5s
+			retries: 12
+
+	frontend:
+		build:
+			context: ../../frontend
+			dockerfile: Dockerfile
+		depends_on:
+			- backend
+		ports:
+			- "5173:80" # serve static build on host:5173
+		restart: unless-stopped
+
+volumes:
+	db_data:
+
+networks: {}
