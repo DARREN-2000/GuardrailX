@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guardrailx-mlflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: guardrailx-mlflow
+  template:
+    metadata:
+      labels:
+        app: guardrailx-mlflow
+    spec:
+      containers:
+        - name: mlflow
+          image: ghcr.io/mlflow/mlflow:v2.10.0
+          args: ["server", "--host", "0.0.0.0", "--port", "5000", "--default-artifact-root", "/mlflow/artifacts"]
+          env:
+            - name: MLFLOW_BACKEND_STORE_URI
+              valueFrom:
+                secretKeyRef:
+                  name: guardrailx-db-secret
+                  key: mlflow_database_url
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: mlflow-artifacts
+              mountPath: /mlflow/artifacts
+      volumes:
+        - name: mlflow-artifacts
+          emptyDir: {}

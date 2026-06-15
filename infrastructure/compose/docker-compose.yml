@@ -16,6 +16,19 @@ services:
 		ports:
 			- "5432:5432"
 
+	mlflow:
+		image: ghcr.io/mlflow/mlflow:v2.10.0
+		command: mlflow server --host 0.0.0.0 --port 5000 --default-artifact-root /mlflow/artifacts
+		environment:
+			MLFLOW_BACKEND_STORE_URI: "postgresql://guardrailx:guardrailx@db:5432/guardrailx"
+		ports:
+			- "5000:5000"
+		volumes:
+			- mlflow_artifacts:/mlflow/artifacts
+		depends_on:
+			db:
+				condition: service_healthy
+
 	backend:
 		build:
 			context: ../../backend
@@ -25,9 +38,12 @@ services:
 		environment:
 			DATABASE_URL: "postgresql+asyncpg://guardrailx:guardrailx@db:5432/guardrailx"
 			OTEL_ENABLED: "false"
+			MLFLOW_TRACKING_URI: "http://mlflow:5000"
 		depends_on:
 			db:
 				condition: service_healthy
+			mlflow:
+				condition: service_started
 		ports:
 			- "8000:8000"
 		restart: unless-stopped
@@ -48,5 +64,6 @@ services:
 
 volumes:
 	db_data:
+	mlflow_artifacts:
 
 networks: {}

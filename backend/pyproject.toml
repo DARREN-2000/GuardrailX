@@ -20,6 +20,7 @@ dependencies = [
   "opentelemetry-exporter-otlp>=1.26",
   "opentelemetry-instrumentation-fastapi>=0.47b0",
   "opentelemetry-instrumentation-sqlalchemy>=0.47b0",
+  "mlflow>=2.10.0",
 ]
 
 [tool.setuptools]

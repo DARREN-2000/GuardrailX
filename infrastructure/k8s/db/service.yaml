@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: guardrailx-db
+spec:
+  selector:
+    app: guardrailx-db
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
