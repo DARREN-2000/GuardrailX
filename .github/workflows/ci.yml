@@ -12,19 +12,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
       - name: Setup Postgres
         uses: ankane/setup-postgres@v1
         with:
           postgres-version: 15
           database: guardrailx
-          database-user: guardrailx
-          database-password: guardrailx
+        env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
       - name: Install backend
         run: |
@@ -55,11 +59,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+        env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
       - name: Install frontend dependencies
         working-directory: frontend
