@@ -2,17 +2,14 @@ from __future__ import annotations
 
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+import mlflow
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from app.api.v1.router import api_router
 from app.core.config import get_settings
 from app.core.logging import configure_logging, get_logger
-import mlflow
-
-from fastapi import Request
-from fastapi.responses import JSONResponse
-
 from app.db.session import get_engine
 from app.observability import configure_otel
 

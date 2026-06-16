@@ -1,8 +1,11 @@
-from unittest.mock import AsyncMock, patch
 import uuid
+from unittest.mock import AsyncMock, patch
+
 import pytest
-from app.services.policies import PolicyService
+
 from app.models.policy import Policy
+from app.services.policies import PolicyService
+
 
 @pytest.mark.asyncio
 async def test_evaluate_policy():
@@ -16,7 +19,7 @@ async def test_evaluate_policy():
     mock_policy = Policy(id=uuid.uuid4(), name=policy_name, tenant_id=tenant_id)
     mock_repo.get_by_name.return_value = mock_policy
 
-    with patch('asyncio.create_task') as mock_create_task:
+    with patch("asyncio.create_task") as mock_create_task:
         result = await service.evaluate_policy(tenant_id, policy_name, prompt)
 
         assert mock_create_task.called

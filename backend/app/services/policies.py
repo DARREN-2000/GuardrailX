@@ -1,12 +1,11 @@
 from __future__ import annotations
 
+import asyncio
 import time
 import uuid
+from typing import Any
 
 import mlflow
-
-import asyncio
-from typing import Any
 
 from app.models.policy import Policy
 from app.repositories.policies import PolicyRepository
@@ -14,6 +13,8 @@ from app.services.base import CRUDService
 
 
 class PolicyService(CRUDService[Policy]):
+    repository: PolicyRepository
+
     def __init__(self, repository: PolicyRepository) -> None:
         super().__init__(repository)
 
@@ -21,8 +22,7 @@ class PolicyService(CRUDService[Policy]):
         return await self.repository.get_by_name(tenant_id, name)
 
     async def evaluate_policy(self, tenant_id: uuid.UUID, name: str, prompt: str) -> dict[str, Any]:
-        """
-        Evaluate a prompt against a policy, simulating latency and token usage.
+        """Evaluate a prompt against a policy, simulating latency and token usage.
         Logs metrics and evaluation details to MLflow.
         """
         start_time = time.time()
