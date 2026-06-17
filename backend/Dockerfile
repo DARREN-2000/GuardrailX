@@ -8,10 +8,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends build-essential
 
 COPY . /app
 RUN python -m pip install --upgrade pip setuptools wheel
-RUN if [ -f requirements.txt ]; then python -m pip install --no-cache-dir -r requirements.txt; else python -m pip install --no-cache-dir fastapi uvicorn[standard] sqlalchemy asyncpg alembic pydantic pydantic-settings; fi
+RUN if [ -f requirements.txt ]; then python -m pip install --no-cache-dir -r requirements.txt; else python -m pip install --no-cache-dir fastapi uvicorn[standard] sqlalchemy asyncpg alembic pydantic pydantic-settings mlflow; fi
+
+RUN useradd -m appuser && chown -R appuser /app
 
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+USER appuser
 
 EXPOSE 8000
 

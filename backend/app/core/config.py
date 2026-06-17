@@ -34,6 +34,8 @@ class Settings(BaseSettings):
 	otel_traces_sample_rate: float = 1.0
 	otel_resource_attributes: dict[str, str] = Field(default_factory=dict)
 
+	mlflow_tracking_uri: str | None = "http://localhost:5000"
+
 	@field_validator("cors_origins", mode="before")
 	@classmethod
 	def parse_cors_origins(cls, value: Any) -> list[str]:

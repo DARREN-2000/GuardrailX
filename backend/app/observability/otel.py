@@ -6,7 +6,11 @@ from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 from opentelemetry.instrumentation.sqlalchemy import SQLAlchemyInstrumentor
 from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor, ConsoleSpanExporter
+from opentelemetry.sdk.trace.export import (
+    BatchSpanProcessor,
+    ConsoleSpanExporter,
+    SpanExporter,
+)
 
 from app.core.config import Settings
 
@@ -22,6 +26,7 @@ def configure_otel(*, settings: Settings, app=None, engine=None) -> None:
     resource = Resource.create(resource_attributes)
 
     provider = TracerProvider(resource=resource)
+    exporter: SpanExporter
     if settings.otel_exporter_otlp_endpoint:
         exporter = OTLPSpanExporter(endpoint=settings.otel_exporter_otlp_endpoint)
     else:

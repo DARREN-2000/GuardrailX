@@ -6,6 +6,8 @@ from app.services.base import CRUDService
 
 
 class UserService(CRUDService[User]):
+    repository: UserRepository
+
     def __init__(self, repository: UserRepository) -> None:
         super().__init__(repository)
 

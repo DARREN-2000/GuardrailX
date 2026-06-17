@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: guardrailx-backend-config
+data:
+  APP_NAME: "GuardrailX"
+  ENVIRONMENT: "production"
+  OTEL_ENABLED: "false"
+  MLFLOW_TRACKING_URI: "http://guardrailx-mlflow:5000"
