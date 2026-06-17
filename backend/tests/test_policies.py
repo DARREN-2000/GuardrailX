@@ -17,12 +17,23 @@ async def test_evaluate_policy():
     prompt = "This is a test prompt."
 
     mock_policy = Policy(id=uuid.uuid4(), name=policy_name, tenant_id=tenant_id)
-    mock_repo.get_by_name.return_value = mock_policy
 
-    with patch("asyncio.create_task") as mock_create_task:
+    mock_repo.get_by_name = AsyncMock(return_value=mock_policy)
+
+    with patch("asyncio.to_thread") as mock_to_thread, \
+         patch("asyncio.create_task") as mock_create_task:
+
+        async def dummy_coro():
+            pass
+        coro = dummy_coro()
+        mock_to_thread.return_value = coro
+
         result = await service.evaluate_policy(tenant_id, policy_name, prompt)
 
         assert mock_create_task.called
+
+        await coro
+
         assert result["is_safe"] is True
         assert result["risk_score"] == 0.05
         assert result["tokens_used"] == len(prompt.split()) + 10
