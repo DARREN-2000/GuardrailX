@@ -48,7 +48,7 @@ jobs:
       - name: Run backend tests
         run: |
           if [ -d "backend/tests" ] && [ "$(ls -A backend/tests)" ]; then
-            cd backend && TEST_DATABASE_URL="postgresql+asyncpg://guardrailx:guardrailx@localhost:5432/guardrailx" pytest tests -q --cov=app --cov-fail-under=85 -W ignore::RuntimeWarning
+            cd backend && TEST_DATABASE_URL="postgresql+asyncpg://guardrailx:guardrailx@localhost:5432/guardrailx" python -m pytest tests -q --cov=app --cov-fail-under=85 -W ignore::RuntimeWarning
           else
             echo "No backend tests found, skipping."
           fi
