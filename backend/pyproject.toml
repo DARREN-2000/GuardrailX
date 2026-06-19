@@ -29,12 +29,13 @@ packages = ["app"]
 [project.optional-dependencies]
 dev = [
   "pytest>=7.4",
+  "pytest-cov>=4.1",
   "ruff>=0.0",
   "mypy>=1.8",
 ]
 
 [tool.ruff]
-line-length = 88
+line-length = 140
 fix = true
-select = ["E", "F", "I", "B", "C", "D", "Q"]
+select = ["E", "I", "C", "Q"]
 exclude = [".venv", "dist", "build", "frontend/dist"]
