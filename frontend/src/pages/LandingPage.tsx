@@ -1,5 +1,4 @@
 import HeroSection from "@/sections/HeroSection";
-import TrustedBySection from "@/sections/TrustedBySection";
 import ProblemSection from "@/sections/ProblemSection";
 import CapabilitiesSection from "@/sections/CapabilitiesSection";
 import ArchitectureSection from "@/sections/ArchitectureSection";
@@ -20,7 +19,6 @@ export default function LandingPage() {
   return (
     <div className="flex flex-col w-full">
       <HeroSection />
-      <TrustedBySection />
       <ProblemSection />
       <CapabilitiesSection />
       <ArchitectureSection />
