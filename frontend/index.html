@@ -3,11 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#060A13" />
-    <meta name="description" content="GuardrailX is a production-grade policy-driven AI governance runtime for enterprise LLM workloads." />
-    <title>GuardrailX</title>
+    <title>GuardrailX | Enterprise AI Governance</title>
+    <meta name="description" content="The policy-driven AI governance runtime. Secure every prompt, route every model, and keep every decision auditable." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://guardrailx.com/" />
+    <meta property="og:title" content="GuardrailX | Enterprise AI Governance" />
+    <meta property="og:description" content="The policy-driven AI governance runtime. Secure every prompt, route every model, and keep every decision auditable." />
+    <meta property="og:image" content="https://guardrailx.com/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://guardrailx.com/" />
+    <meta property="twitter:title" content="GuardrailX | Enterprise AI Governance" />
+    <meta property="twitter:description" content="The policy-driven AI governance runtime. Secure every prompt, route every model, and keep every decision auditable." />
+    <meta property="twitter:image" content="https://guardrailx.com/og-image.jpg" />
+
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
   </head>
-  <body class="bg-slate-950 text-slate-100 antialiased">
+  <body class="bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
