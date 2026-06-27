@@ -24,7 +24,9 @@ class RiskAssessment(Base, UUIDPrimaryKeyMixin, TenantScopedMixin, TimestampMixi
         SAEnum(AssessmentKind, name="assessment_kind", native_enum=True),
         nullable=False,
     )
-    provider_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("providers.id", ondelete="SET NULL"), nullable=True)
+    provider_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("providers.id", ondelete="SET NULL"), nullable=True
+    )
     score: Mapped[int] = mapped_column(Integer, nullable=False)
     severity: Mapped[str] = mapped_column(String(32), nullable=False)
     summary: Mapped[str] = mapped_column(String(500), nullable=False)

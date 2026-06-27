@@ -25,7 +25,9 @@ class PolicyVersion(Base, UUIDPrimaryKeyMixin, TimestampMixin):
     )
     content: Mapped[dict[str, object]] = mapped_column(JSONB, nullable=False, default=dict)
     checksum: Mapped[str] = mapped_column(String(128), nullable=False)
-    published_by_user_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
+    published_by_user_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
     published_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
 

@@ -11,15 +11,15 @@ async def test_crud_service():
     mock_repo = AsyncMock()
     service = CRUDService(repository=mock_repo)
 
-    mock_repo.get.return_value = "mock_entity"
+    mock_repo.get = AsyncMock(return_value="mock_entity")
     res = await service.get(1)
     assert res == "mock_entity"
 
-    mock_repo.list.return_value = ["mock_entity"]
+    mock_repo.list = AsyncMock(return_value=["mock_entity"])
     res_list = await service.list(offset=0, limit=10)
     assert res_list == ["mock_entity"]
 
-    mock_repo.add.return_value = "mock_entity_created"
+    mock_repo.add = AsyncMock(return_value="mock_entity_created")
     res_create = await service.create("new_entity")
     assert res_create == "mock_entity_created"
 
