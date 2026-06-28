@@ -50,6 +50,7 @@ class PolicyService(CRUDService[Policy]):
                     mlflow.log_param("is_safe", str(is_safe))
             except Exception as e:
                 from app.core.logging import get_logger
+
                 logger = get_logger(__name__)
                 logger.error(f"Failed to log metrics to MLflow: {e}")
 

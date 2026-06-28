@@ -1,69 +1,69 @@
 version: '3.8'
 
 services:
-	db:
-		image: postgres:15
-		environment:
-			POSTGRES_USER: guardrailx
-			POSTGRES_PASSWORD: guardrailx
-			POSTGRES_DB: guardrailx
-		volumes:
-			- db_data:/var/lib/postgresql/data
-		healthcheck:
-			test: ["CMD-SHELL", "pg_isready -U guardrailx -d guardrailx"]
-			interval: 5s
-			retries: 10
-		ports:
-			- "5432:5432"
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: guardrailx
+      POSTGRES_PASSWORD: guardrailx
+      POSTGRES_DB: guardrailx
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U guardrailx -d guardrailx"]
+      interval: 5s
+      retries: 10
+    ports:
+      - "5432:5432"
 
-	mlflow:
-		image: ghcr.io/mlflow/mlflow:v2.10.0
-		command: mlflow server --host 0.0.0.0 --port 5000 --default-artifact-root /mlflow/artifacts
-		environment:
-			MLFLOW_BACKEND_STORE_URI: "postgresql://guardrailx:guardrailx@db:5432/guardrailx"
-		ports:
-			- "5000:5000"
-		volumes:
-			- mlflow_artifacts:/mlflow/artifacts
-		depends_on:
-			db:
-				condition: service_healthy
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.10.0
+    command: mlflow server --host 0.0.0.0 --port 5000 --default-artifact-root /mlflow/artifacts
+    environment:
+      MLFLOW_BACKEND_STORE_URI: "postgresql://guardrailx:guardrailx@db:5432/guardrailx"
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow_artifacts:/mlflow/artifacts
+    depends_on:
+      db:
+        condition: service_healthy
 
-	backend:
-		build:
-			context: ../../backend
-			dockerfile: Dockerfile
-		env_file:
-			- ../../backend/.env
-		environment:
-			DATABASE_URL: "postgresql+asyncpg://guardrailx:guardrailx@db:5432/guardrailx"
-			OTEL_ENABLED: "false"
-			MLFLOW_TRACKING_URI: "http://mlflow:5000"
-		depends_on:
-			db:
-				condition: service_healthy
-			mlflow:
-				condition: service_started
-		ports:
-			- "8000:8000"
-		restart: unless-stopped
-		healthcheck:
-			test: ["CMD-SHELL", "curl -f http://localhost:8000/api/v1/health/live || exit 1"]
-			interval: 5s
-			retries: 12
+  backend:
+    build:
+      context: ../../backend
+      dockerfile: Dockerfile
+    env_file:
+      - ../../backend/.env
+    environment:
+      DATABASE_URL: "postgresql+asyncpg://guardrailx:guardrailx@db:5432/guardrailx"
+      OTEL_ENABLED: "false"
+      MLFLOW_TRACKING_URI: "http://mlflow:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+      mlflow:
+        condition: service_started
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/api/v1/health/live || exit 1"]
+      interval: 5s
+      retries: 12
 
-	frontend:
-		build:
-			context: ../../frontend
-			dockerfile: Dockerfile
-		depends_on:
-			- backend
-		ports:
-			- "5173:80" # serve static build on host:5173
-		restart: unless-stopped
+  frontend:
+    build:
+      context: ../../frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - "5173:80" # serve static build on host:5173
+    restart: unless-stopped
 
 volumes:
-	db_data:
-	mlflow_artifacts:
+  db_data:
+  mlflow_artifacts:
 
 networks: {}

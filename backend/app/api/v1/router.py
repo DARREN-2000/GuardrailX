@@ -14,4 +14,3 @@ api_router.include_router(tenants_router)
 api_router.include_router(users_router)
 api_router.include_router(providers_router)
 api_router.include_router(policies_router)
-
