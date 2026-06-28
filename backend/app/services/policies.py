@@ -34,8 +34,8 @@ class PolicyService(CRUDService[Policy]):
         risk_score = 0.0
 
         # 1. PII Redaction Check (Email and basic phone numbers)
-        email_pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
-        phone_pattern = r'\b\d{3}[-.]?\d{3}[-.]?\d{4}\b'
+        email_pattern = r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+        phone_pattern = r"\b\d{3}[-.]?\d{3}[-.]?\d{4}\b"
 
         has_pii = False
         if re.search(email_pattern, prompt) or re.search(phone_pattern, prompt):
@@ -87,5 +87,5 @@ class PolicyService(CRUDService[Policy]):
             "latency": latency,
             "policy": policy.name if policy else None,
             "has_pii": has_pii,
-            "has_injection": has_injection
+            "has_injection": has_injection,
         }

@@ -39,6 +39,7 @@ async def get_default_provider(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Default provider not found")
     return _to_summary(provider)
 
+
 @router.post("/route", response_model=ProviderSummary)
 async def route_request(
     tenant_id: str,

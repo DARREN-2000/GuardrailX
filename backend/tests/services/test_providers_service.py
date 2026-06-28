@@ -30,6 +30,7 @@ async def test_get_default_provider():
     assert res == provider
     mock_repo.get_default_for_tenant.assert_called_once_with("tenant1")
 
+
 @pytest.mark.asyncio
 async def test_route_request():
     mock_repo = AsyncMock()
@@ -50,6 +51,7 @@ async def test_route_request():
     res = await service.route_request("tenant1")
     assert res == p2
 
+
 @pytest.mark.asyncio
 async def test_route_request_no_default():
     mock_repo = AsyncMock()
@@ -69,6 +71,7 @@ async def test_route_request_no_default():
 
     res = await service.route_request("tenant1")
     assert res == p2
+
 
 @pytest.mark.asyncio
 async def test_route_request_none_enabled():

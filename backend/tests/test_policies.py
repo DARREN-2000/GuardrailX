@@ -42,6 +42,7 @@ async def test_evaluate_policy():
         assert result["has_pii"] is False
         assert result["has_injection"] is False
 
+
 @pytest.mark.asyncio
 async def test_evaluate_policy_with_pii():
     mock_repo = AsyncMock()
@@ -73,6 +74,7 @@ async def test_evaluate_policy_with_pii():
         assert result["risk_score"] == 0.4
         assert result["has_pii"] is True
         assert result["has_injection"] is False
+
 
 @pytest.mark.asyncio
 async def test_evaluate_policy_with_injection():
