@@ -46,20 +46,33 @@ export default function ScreenshotsSection() {
                </div>
 
                <div className="h-64 rounded-xl border border-border/50 bg-background/50 p-4 relative overflow-hidden">
-                 <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/30 font-medium">
-                   [ Time-Series Chart Visualization ]
-                 </div>
-                 {/* Decorative chart lines */}
-                 <svg className="absolute inset-0 w-full h-full opacity-50" preserveAspectRatio="none" viewBox="0 0 100 100">
-                    <path d="M0,80 Q20,60 40,70 T80,40 T100,50 L100,100 L0,100 Z" fill="url(#grad1)" />
-                    <path d="M0,80 Q20,60 40,70 T80,40 T100,50" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" />
+                 {/* Replaced placeholder with an actual SVG chart graphic */}
+                 <svg className="absolute inset-0 w-full h-full opacity-80" preserveAspectRatio="none" viewBox="0 0 100 100">
+                    <path d="M0,80 Q10,70 20,60 T40,65 T60,50 T80,40 T100,20 L100,100 L0,100 Z" fill="url(#grad1)" />
+                    <path d="M0,80 Q10,70 20,60 T40,65 T60,50 T80,40 T100,20" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.5" />
+
+                    <path d="M0,90 Q15,85 30,75 T50,80 T70,65 T90,55 T100,45" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.2" opacity="0.5" />
                     <defs>
                       <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
+                        <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
                         <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
                       </linearGradient>
                     </defs>
                  </svg>
+                 <div className="absolute inset-x-0 bottom-0 flex justify-between px-4 pb-2 text-[10px] text-muted-foreground font-mono">
+                    <span>12:00</span>
+                    <span>13:00</span>
+                    <span>14:00</span>
+                    <span>15:00</span>
+                    <span>16:00</span>
+                 </div>
+                 <div className="absolute inset-y-0 left-0 flex flex-col justify-between py-4 pl-2 text-[10px] text-muted-foreground font-mono">
+                    <span>20k</span>
+                    <span>15k</span>
+                    <span>10k</span>
+                    <span>5k</span>
+                    <span>0</span>
+                 </div>
                </div>
              </div>
            </motion.div>

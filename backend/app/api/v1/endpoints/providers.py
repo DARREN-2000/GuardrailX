@@ -38,3 +38,14 @@ async def get_default_provider(
     if provider is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Default provider not found")
     return _to_summary(provider)
+
+
+@router.post("/route", response_model=ProviderSummary)
+async def route_request(
+    tenant_id: str,
+    provider_service: ProviderService = Depends(get_provider_service),
+) -> ProviderSummary:
+    provider = await provider_service.route_request(tenant_id)
+    if provider is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No available providers found for routing")
+    return _to_summary(provider)
