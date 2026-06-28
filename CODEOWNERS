@@ -1,0 +1,18 @@
+# Aegis CODEOWNERS
+
+# Global owners
+*       @DARREN-2000
+
+# Backend code
+/backend/       @DARREN-2000
+/policies/      @DARREN-2000
+
+# Frontend code
+/frontend/      @DARREN-2000
+
+# Documentation
+/docs/          @DARREN-2000
+README.md       @DARREN-2000
+
+# Infrastructure
+/infrastructure/ @DARREN-2000
