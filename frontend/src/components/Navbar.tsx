@@ -13,10 +13,10 @@ export default function Navbar() {
           <span className="font-display font-medium tracking-tight text-lg">GuardrailX</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
-          <a href="#features" className="transition-colors hover:text-foreground">Features</a>
-          <a href="#architecture" className="transition-colors hover:text-foreground">Architecture</a>
-          <a href="#performance" className="transition-colors hover:text-foreground">Performance</a>
-          <a href="#enterprise" className="transition-colors hover:text-foreground">Enterprise</a>
+          <Link to="#features" className="transition-colors hover:text-foreground">Features</Link>
+          <Link to="#architecture" className="transition-colors hover:text-foreground">Architecture</Link>
+          <Link to="#performance" className="transition-colors hover:text-foreground">Performance</Link>
+          <Link to="#enterprise" className="transition-colors hover:text-foreground">Enterprise</Link>
         </nav>
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="sm" className="hidden sm:inline-flex text-muted-foreground hover:text-foreground">

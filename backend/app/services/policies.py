@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import re
 import time
 import uuid
 from typing import Any
@@ -22,17 +23,38 @@ class PolicyService(CRUDService[Policy]):
         return await self.repository.get_by_name(tenant_id, name)
 
     async def evaluate_policy(self, tenant_id: uuid.UUID, name: str, prompt: str) -> dict[str, Any]:
-        """Evaluate a prompt against a policy, simulating latency and token usage.
+        """Evaluate a prompt against a policy, checking for PII and prompt injection.
         Logs metrics and evaluation details to MLflow.
         """
         start_time = time.time()
         policy = await self.get_by_name(tenant_id, name)
 
-        # Simulate some evaluation logic
+        # Real heuristic evaluation logic
         is_safe = True
-        risk_score = 0.05
-        tokens_used = len(prompt.split()) + 10
+        risk_score = 0.0
 
+        # 1. PII Redaction Check (Email and basic phone numbers)
+        email_pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
+        phone_pattern = r'\b\d{3}[-.]?\d{3}[-.]?\d{4}\b'
+
+        has_pii = False
+        if re.search(email_pattern, prompt) or re.search(phone_pattern, prompt):
+            has_pii = True
+            risk_score += 0.4
+
+        # 2. Prompt Injection Detection (Keywords)
+        injection_keywords = ["ignore previous instructions", "system prompt", "bypass", "jailbreak", "you are now"]
+        has_injection = False
+
+        lower_prompt = prompt.lower()
+        if any(keyword in lower_prompt for keyword in injection_keywords):
+            has_injection = True
+            risk_score += 0.6
+
+        if risk_score > 0.5:
+            is_safe = False
+
+        tokens_used = len(prompt.split()) + 10
         latency = time.time() - start_time
 
         # Offload MLflow logging to avoid blocking the async event loop
@@ -48,11 +70,13 @@ class PolicyService(CRUDService[Policy]):
                     mlflow.log_metric("tokens_used", tokens_used)
                     mlflow.log_metric("risk_score", risk_score)
                     mlflow.log_param("is_safe", str(is_safe))
+                    mlflow.log_param("has_pii", str(has_pii))
+                    mlflow.log_param("has_injection", str(has_injection))
             except Exception as e:
                 from app.core.logging import get_logger
 
                 logger = get_logger(__name__)
-                logger.error(f"Failed to log metrics to MLflow: {e}")
+                logger.error(f"Failed to log metrics to MLflow: %s", e)
 
         asyncio.create_task(asyncio.to_thread(_log_to_mlflow))
 
@@ -62,4 +86,6 @@ class PolicyService(CRUDService[Policy]):
             "tokens_used": tokens_used,
             "latency": latency,
             "policy": policy.name if policy else None,
+            "has_pii": has_pii,
+            "has_injection": has_injection
         }
