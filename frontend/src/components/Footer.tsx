@@ -7,11 +7,11 @@ export default function Footer() {
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-4 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20">
-                <Shield className="h-5 w-5" />
+            <Link to="/" className="flex items-center gap-2 mb-4 transition-opacity hover:opacity-80">
+              <div className="flex h-7 w-7 items-center justify-center rounded bg-primary/10 text-primary ring-1 ring-primary/20">
+                <Shield className="h-4 w-4" />
               </div>
-              <span className="font-display font-semibold tracking-tight text-lg">GuardrailX</span>
+              <span className="font-display font-medium tracking-tight text-lg">GuardrailX</span>
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
               The policy-driven AI governance runtime. Secure every prompt, route every model, and keep every decision auditable.
