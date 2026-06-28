@@ -3,13 +3,13 @@ import { Code, Settings, Activity } from "lucide-react";
 
 export default function HowItWorksSection() {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-background border-t border-white/5">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl mb-4">
+          <h2 className="font-display text-3xl font-medium tracking-tight sm:text-4xl mb-4 text-white">
             How it works
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-white/50 font-light">
             Drop GuardrailX into your infrastructure and configure policies as code.
           </p>
         </div>
@@ -26,16 +26,16 @@ export default function HowItWorksSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative p-8 rounded-2xl border border-border/50 bg-muted/30"
+              className="relative p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors group"
             >
-              <div className="text-4xl font-display font-bold text-muted/50 absolute top-6 right-6 select-none">
+              <div className="text-4xl font-display font-bold text-white/5 absolute top-6 right-6 select-none transition-colors group-hover:text-white/10">
                 {item.step}
               </div>
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                <item.icon className="h-6 w-6 text-primary" />
+              <div className="h-10 w-10 rounded bg-white/5 flex items-center justify-center mb-6 border border-white/10 group-hover:border-white/20 transition-colors">
+                <item.icon className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-              <p className="text-muted-foreground">{item.desc}</p>
+              <h3 className="text-lg font-medium mb-3 text-white/90">{item.title}</h3>
+              <p className="text-sm text-white/50 leading-relaxed font-light">{item.desc}</p>
             </motion.div>
           ))}
         </div>

@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
+    --background: 0 0% 0%; /* Pure black for modern premium feel */
     --foreground: 0 0% 98%;
 
-    --card: 240 10% 3.9%;
+    --card: 0 0% 2%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 10% 3.9%;
+    --popover: 0 0% 2%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 152 76% 58%; /* Emerald-400 */
-    --primary-foreground: 240 5.9% 10%;
+    --primary: 0 0% 98%; /* White as primary accent */
+    --primary-foreground: 0 0% 9%;
 
-    --secondary: 240 3.7% 15.9%;
+    --secondary: 0 0% 8%; /* Very dark gray */
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 0 0% 8%;
+    --muted-foreground: 0 0% 63.9%;
 
-    --accent: 240 3.7% 15.9%;
+    --accent: 0 0% 8%;
     --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --border: 0 0% 12%; /* Subtle border */
+    --input: 0 0% 12%;
+    --ring: 0 0% 20%;
 
     --radius: 0.5rem;
   }
@@ -41,7 +41,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
   }
 }
 
@@ -52,13 +52,11 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background:
-    radial-gradient(circle at top, rgba(52, 211, 153, 0.14), transparent 28%),
-    linear-gradient(180deg, #09090b 0%, #060a13 100%);
+  background: #000;
 }
 
 .bg-radial-grid {
-  background-image: radial-gradient(circle at top, rgba(104, 211, 145, 0.16), transparent 35%), linear-gradient(180deg, rgba(6, 10, 19, 0.94), rgba(9, 13, 25, 1));
+  background-image: radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 40%);
 }
 
 a {

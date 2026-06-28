@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Shield, Zap, Lock, Activity, Scale, Server } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const capabilities = [
   {
@@ -52,13 +51,16 @@ const itemVariants = {
 
 export default function CapabilitiesSection() {
   return (
-    <section id="features" className="py-24 bg-background">
-      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section id="features" className="py-24 bg-background border-t border-white/5 relative overflow-hidden">
+      {/* Subtle background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl mb-4">
+          <h2 className="font-display text-3xl font-medium tracking-tight sm:text-4xl mb-4 text-white">
             A complete control plane
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-white/50 font-light">
             Everything you need to secure, monitor, and scale your AI applications in production.
           </p>
         </div>
@@ -72,19 +74,15 @@ export default function CapabilitiesSection() {
         >
           {capabilities.map((feature) => (
             <motion.div key={feature.title} variants={itemVariants}>
-              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-colors group">
-                <CardHeader>
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <feature.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base text-muted-foreground">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              <div className="h-full rounded-2xl border border-white/5 bg-white/[0.01] backdrop-blur-sm p-6 hover:bg-white/[0.03] transition-all duration-300 hover:border-white/10 group">
+                <div className="h-10 w-10 rounded bg-white/5 flex items-center justify-center mb-6 border border-white/10 group-hover:border-white/20 transition-colors">
+                  <feature.icon className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="text-lg font-medium mb-2 text-white/90">{feature.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed font-light">
+                  {feature.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

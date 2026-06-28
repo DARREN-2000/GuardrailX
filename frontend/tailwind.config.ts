@@ -21,8 +21,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Cal Sans', 'Inter', 'ui-sans-serif', 'system-ui'],
-        body: ['Inter', 'ui-sans-serif', 'system-ui'],
+        display: ['"Geist Variable"', 'ui-sans-serif', 'system-ui'],
+        body: ['"Geist Variable"', 'ui-sans-serif', 'system-ui'],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -3,13 +3,13 @@ import { ShieldAlert, Database, Network } from "lucide-react";
 
 export default function ProblemSection() {
   return (
-    <section id="problem" className="py-24 bg-background">
+    <section id="problem" className="py-24 bg-background border-t border-white/5">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl mb-4 text-red-400">
+          <h2 className="font-display text-3xl font-medium tracking-tight sm:text-4xl mb-4 text-white">
             The AI adoption bottleneck
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-white/50 font-light">
             Integrating LLMs into production exposes enterprises to new attack vectors, unpredictable costs, and compliance risks.
           </p>
         </div>
@@ -26,13 +26,13 @@ export default function ProblemSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="p-6 rounded-2xl border border-border/50 bg-card/30"
+              className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors"
             >
-              <div className="h-12 w-12 rounded-lg bg-red-500/10 flex items-center justify-center mb-4">
-                <item.icon className="h-6 w-6 text-red-400" />
+              <div className="h-10 w-10 rounded bg-white/5 flex items-center justify-center mb-6 border border-white/10">
+                <item.icon className="h-5 w-5 text-white/70" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-              <p className="text-muted-foreground">{item.desc}</p>
+              <h3 className="text-lg font-medium mb-2 text-white/90">{item.title}</h3>
+              <p className="text-sm text-white/50 leading-relaxed font-light">{item.desc}</p>
             </motion.div>
           ))}
         </div>
