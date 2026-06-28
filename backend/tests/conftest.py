@@ -4,6 +4,7 @@ import uuid
 
 import pytest
 import pytest_asyncio
+from sqlalchemy.pool import StaticPool
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.db.base import Base
@@ -24,9 +25,9 @@ def visit_JSONB(self, type_, **kw):
 sqlite_base.SQLiteTypeCompiler.visit_JSONB = visit_JSONB
 
 
-@pytest_asyncio.fixture(scope="session")
+@pytest_asyncio.fixture(scope="function")
 async def db_engine():
-    engine = create_async_engine(TEST_DATABASE_URL, echo=False)
+    engine = create_async_engine(TEST_DATABASE_URL, echo=False, poolclass=StaticPool)
 
     # Create all tables
     async with engine.begin() as conn:
