@@ -40,11 +40,13 @@ def test_models_import():
     assert p.name == "p"
     assert u.email == "u"
 
+
 @pytest.mark.asyncio
 async def test_health_routes():
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         res = await client.get("/api/v1/health/live")
         assert res.status_code == 200
+
 
 @pytest.mark.asyncio
 async def test_base_repo_coverage_mock():

@@ -8,6 +8,7 @@ def test_settings_default():
     assert not settings.otel_enabled
     assert settings.otel_exporter_otlp_endpoint is None
 
+
 def test_settings_model_config():
     settings = Settings(database_url="sqlite+aiosqlite:///:memory:")
     assert settings.database_url == "sqlite+aiosqlite:///:memory:"

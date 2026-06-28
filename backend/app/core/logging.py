@@ -40,9 +40,7 @@ def configure_logging(settings: Settings) -> None:
     root_logger.setLevel(settings.log_level.upper())
 
     handler = logging.StreamHandler()
-    handler.setFormatter(
-        JsonFormatter() if settings.json_logs else logging.Formatter("%(asctime)s %(levelname)s %(name)s %(message)s")
-    )
+    handler.setFormatter(JsonFormatter() if settings.json_logs else logging.Formatter("%(asctime)s %(levelname)s %(name)s %(message)s"))
     root_logger.addHandler(handler)
 
     for logger_name in ("uvicorn", "uvicorn.error", "uvicorn.access", "sqlalchemy.engine", "sqlalchemy.pool"):

@@ -24,12 +24,8 @@ class GovernanceDecision(Base, UUIDPrimaryKeyMixin, TenantScopedMixin, Timestamp
         ForeignKey("risk_assessments.id", ondelete="CASCADE"),
         nullable=False,
     )
-    provider_id: Mapped[uuid.UUID | None] = mapped_column(
-        ForeignKey("providers.id", ondelete="SET NULL"), nullable=True
-    )
-    decided_by_user_id: Mapped[uuid.UUID | None] = mapped_column(
-        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
-    )
+    provider_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("providers.id", ondelete="SET NULL"), nullable=True)
+    decided_by_user_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     outcome: Mapped[DecisionOutcome] = mapped_column(
         SAEnum(DecisionOutcome, name="decision_outcome", native_enum=True),
         nullable=False,

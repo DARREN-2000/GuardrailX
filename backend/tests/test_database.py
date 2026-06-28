@@ -29,6 +29,7 @@ async def test_tenant_repository(async_db_session):
     res_missing = await repo.get_by_slug("nonexistent")
     assert res_missing is None
 
+
 @pytest.mark.asyncio
 async def test_user_repository(async_db_session):
     tenant_repo = TenantRepository(async_db_session)
@@ -47,6 +48,7 @@ async def test_user_repository(async_db_session):
     res_missing = await repo.get_by_email(tenant.id, "nonexistent@example.com")
     assert res_missing is None
 
+
 @pytest.mark.asyncio
 async def test_provider_repository(async_db_session):
     tenant_repo = TenantRepository(async_db_session)
@@ -54,7 +56,14 @@ async def test_provider_repository(async_db_session):
     await tenant_repo.add(tenant)
 
     repo = ProviderRepository(async_db_session)
-    provider = Provider(tenant_id=tenant.id, name="OpenAI", provider_type=ProviderType.openai, base_url="https://api.openai.com", model_name="gpt-4", is_default=True)
+    provider = Provider(
+        tenant_id=tenant.id,
+        name="OpenAI",
+        provider_type=ProviderType.openai,
+        base_url="https://api.openai.com",
+        model_name="gpt-4",
+        is_default=True,
+    )
     await repo.add(provider)
 
     res_list = await repo.list_for_tenant(tenant.id)
@@ -63,6 +72,7 @@ async def test_provider_repository(async_db_session):
     res_default = await repo.get_default_for_tenant(tenant.id)
     assert res_default is not None
     assert res_default.name == "OpenAI"
+
 
 @pytest.mark.asyncio
 async def test_policy_repository(async_db_session):

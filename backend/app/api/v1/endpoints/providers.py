@@ -13,9 +13,7 @@ def _to_summary(provider) -> ProviderSummary:
     return ProviderSummary(
         id=provider.id,
         name=provider.name,
-        provider_type=provider.provider_type.value
-        if hasattr(provider.provider_type, "value")
-        else str(provider.provider_type),
+        provider_type=provider.provider_type.value if hasattr(provider.provider_type, "value") else str(provider.provider_type),
         enabled=provider.enabled,
         is_default=provider.is_default,
         routing_priority=provider.routing_priority,
