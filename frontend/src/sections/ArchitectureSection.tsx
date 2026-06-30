@@ -36,7 +36,6 @@ export default function ArchitectureSection() {
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-r from-white/10 to-transparent blur-3xl rounded-full opacity-30" />
             <div className="relative border border-white/10 rounded-2xl bg-[#0A0A0A] p-8 shadow-2xl">
-              {/* Architecture Diagram Mock */}
               <div className="flex flex-col gap-6">
                 <div className="flex justify-between items-center bg-white/[0.03] p-4 rounded-xl border border-white/10">
                   <span className="font-medium text-white/80">Your Application</span>
