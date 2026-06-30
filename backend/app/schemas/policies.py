@@ -2,8 +2,9 @@ from __future__ import annotations
 
 from uuid import UUID
 
-from app.schemas.common import ORMModel
 from pydantic import BaseModel
+
+from app.schemas.common import ORMModel
 
 
 class PolicyCreate(ORMModel):

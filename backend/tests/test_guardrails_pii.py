@@ -1,5 +1,7 @@
 import pytest
+
 from app.services.guardrails.pii import redact_pii
+
 
 def test_pii_redaction_email():
     text = "My email is test@example.com."

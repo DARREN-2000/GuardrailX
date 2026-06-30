@@ -1,5 +1,7 @@
 import pytest
+
 from app.services.guardrails.enforcement import evaluate_guardrails
+
 
 def test_evaluate_allow():
     result = evaluate_guardrails("This is a totally normal and safe sentence without any issues.")

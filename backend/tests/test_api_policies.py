@@ -1,9 +1,12 @@
-import pytest
-from httpx import AsyncClient, ASGITransport
 import uuid
-from app.main import app
-from app.core.dependencies import get_policy_service
 from unittest.mock import AsyncMock
+
+import pytest
+from httpx import ASGITransport, AsyncClient
+
+from app.core.dependencies import get_policy_service
+from app.main import app
+
 
 @pytest.mark.asyncio
 async def test_evaluate_policy_endpoint():

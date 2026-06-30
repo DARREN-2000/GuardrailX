@@ -5,7 +5,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, status
 
 from app.core.dependencies import get_policy_service
-from app.schemas.policies import PolicyCreate, PolicyRead, PolicyEvaluateRequest, PolicyEvaluateResponse
+from app.schemas.policies import PolicyCreate, PolicyEvaluateRequest, PolicyEvaluateResponse, PolicyRead
 from app.services.policies import PolicyService
 
 router = APIRouter(prefix="/policies", tags=["policies"])

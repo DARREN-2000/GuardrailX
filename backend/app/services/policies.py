@@ -76,7 +76,7 @@ class PolicyService(CRUDService[Policy]):
                 from app.core.logging import get_logger
 
                 logger = get_logger(__name__)
-                logger.error(f"Failed to log metrics to MLflow: %s", e)
+                logger.error("Failed to log metrics to MLflow: %s", e)
 
         asyncio.create_task(asyncio.to_thread(_log_to_mlflow))
 
