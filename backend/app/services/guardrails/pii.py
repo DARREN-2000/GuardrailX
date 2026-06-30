@@ -6,21 +6,15 @@ from presidio_anonymizer import AnonymizerEngine
 analyzer = AnalyzerEngine()
 anonymizer = AnonymizerEngine()
 
+
 def redact_pii(text: str) -> Dict[str, Any]:
     entities_to_find = ["EMAIL_ADDRESS", "PHONE_NUMBER", "CREDIT_CARD", "IBAN_CODE", "IP_ADDRESS", "PERSON"]
     results = analyzer.analyze(text=text, entities=entities_to_find, language="en")
 
     entities = []
     for res in results:
-        entities.append({
-            "type": res.entity_type,
-            "span": [res.start, res.end],
-            "score": res.score
-        })
+        entities.append({"type": res.entity_type, "span": [res.start, res.end], "score": res.score})
 
     anonymized_result = anonymizer.anonymize(text=text, analyzer_results=results)
 
-    return {
-        "redacted_text": anonymized_result.text,
-        "entities": entities
-    }
+    return {"redacted_text": anonymized_result.text, "entities": entities}

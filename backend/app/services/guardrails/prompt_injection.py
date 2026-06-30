@@ -11,6 +11,7 @@ INJECTION_PATTERNS = [
     (r"(?i)\[(?:user|assistant|system)\]", "role_override"),
 ]
 
+
 def detect_prompt_injection(text: str) -> Dict[str, Any]:
     matched_signals = []
 
@@ -24,7 +25,4 @@ def detect_prompt_injection(text: str) -> Dict[str, Any]:
         # Base risk score based on number of signals, capped at 1.0
         risk_score = min(1.0, len(matched_signals) * 0.4 + 0.5)
 
-    return {
-        "risk_score": risk_score,
-        "matched_signals": matched_signals
-    }
+    return {"risk_score": risk_score, "matched_signals": matched_signals}

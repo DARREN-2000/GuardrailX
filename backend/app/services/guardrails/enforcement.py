@@ -51,6 +51,6 @@ def evaluate_guardrails(text: str) -> Dict[str, Any]:
             "pii": pii_results,
             "prompt_injection": prompt_injection_results,
             "jailbreak": jailbreak_results,
-            "content_safety": content_safety_results
-        }
+            "content_safety": content_safety_results,
+        },
     }

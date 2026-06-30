@@ -38,19 +38,14 @@ async def create_policy(payload: PolicyCreate, service: PolicyService = Depends(
     )
     return PolicyRead.model_validate(policy)
 
+
 @router.post("/{policy_id}/evaluate", response_model=PolicyEvaluateResponse)
 async def evaluate_policy(
-    policy_id: UUID,
-    request: PolicyEvaluateRequest,
-    service: PolicyService = Depends(get_policy_service)
+    policy_id: UUID, request: PolicyEvaluateRequest, service: PolicyService = Depends(get_policy_service)
 ) -> PolicyEvaluateResponse:
     policy = await service.get(policy_id)
     if not policy:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Policy not found")
 
-    result = await service.evaluate_policy(
-        tenant_id=policy.tenant_id,
-        name=policy.name,
-        prompt=request.prompt
-    )
+    result = await service.evaluate_policy(tenant_id=policy.tenant_id, name=policy.name, prompt=request.prompt)
     return PolicyEvaluateResponse(**result)

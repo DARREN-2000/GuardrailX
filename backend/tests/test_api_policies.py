@@ -23,7 +23,7 @@ async def test_evaluate_policy_endpoint():
         "latency": 0.05,
         "policy": "test_policy",
         "has_pii": False,
-        "has_injection": False
+        "has_injection": False,
     }
 
     app.dependency_overrides[get_policy_service] = lambda: mock_service
@@ -31,10 +31,7 @@ async def test_evaluate_policy_endpoint():
     policy_id = uuid.uuid4()
 
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
-        response = await ac.post(
-            f"/api/v1/policies/{policy_id}/evaluate",
-            json={"prompt": "test prompt"}
-        )
+        response = await ac.post(f"/api/v1/policies/{policy_id}/evaluate", json={"prompt": "test prompt"})
 
     assert response.status_code == 200
     data = response.json()

@@ -15,7 +15,8 @@ JAILBREAK_PATTERNS = [
 
 # Very simple heuristics for obfuscation
 BASE64_PATTERN = r"(?:[A-Za-z0-9+/]{4}){5,}(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?"
-LEETSPEAK_PATTERN = r"(?i)\b[a-z0-9]*[013457][a-z0-9]*\b" # Word with digits in it
+LEETSPEAK_PATTERN = r"(?i)\b[a-z0-9]*[013457][a-z0-9]*\b"  # Word with digits in it
+
 
 def detect_jailbreak(text: str) -> Dict[str, Any]:
     matched_signals = []
@@ -38,7 +39,4 @@ def detect_jailbreak(text: str) -> Dict[str, Any]:
     if len(matched_signals) > 0:
         risk_score = min(1.0, len(matched_signals) * 0.35 + 0.5)
 
-    return {
-        "risk_score": risk_score,
-        "matched_signals": matched_signals
-    }
+    return {"risk_score": risk_score, "matched_signals": matched_signals}

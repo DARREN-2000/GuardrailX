@@ -23,8 +23,10 @@ class PolicyRead(ORMModel):
     status: str
     owner_user_id: UUID | None = None
 
+
 class PolicyEvaluateRequest(BaseModel):
     prompt: str
+
 
 class PolicyEvaluateResponse(BaseModel):
     is_safe: bool
