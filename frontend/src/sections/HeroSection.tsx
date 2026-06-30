@@ -62,7 +62,6 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Code Editor Preview Mockup */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,7 +70,6 @@ export default function HeroSection() {
         >
           <div className="absolute -inset-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent blur-xl opacity-50" />
           <div className="relative rounded-2xl border border-white/10 bg-[#0A0A0A] shadow-2xl overflow-hidden">
-            {/* Mockup Header */}
             <div className="flex items-center gap-2 border-b border-white/5 bg-white/[0.02] px-4 py-3">
               <div className="flex gap-1.5">
                 <div className="h-2.5 w-2.5 rounded-full bg-white/20" />
@@ -84,7 +82,6 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
-            {/* Mockup Content */}
             <div className="p-6 overflow-x-auto">
               <pre className="text-sm font-mono leading-relaxed text-white/80">
                 <code className="block">

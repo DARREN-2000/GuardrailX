@@ -46,7 +46,6 @@ export default function ScreenshotsSection() {
                </div>
 
                <div className="h-64 rounded-xl border border-border/50 bg-background/50 p-4 relative overflow-hidden">
-                 {/* Replaced placeholder with an actual SVG chart graphic */}
                  <svg className="absolute inset-0 w-full h-full opacity-80" preserveAspectRatio="none" viewBox="0 0 100 100">
                     <path d="M0,80 Q10,70 20,60 T40,65 T60,50 T80,40 T100,20 L100,100 L0,100 Z" fill="url(#grad1)" />
                     <path d="M0,80 Q10,70 20,60 T40,65 T60,50 T80,40 T100,20" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.5" />

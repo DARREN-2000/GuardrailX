@@ -6,7 +6,6 @@ export default function WorkflowSection() {
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 relative h-[400px] rounded-2xl border border-border/50 bg-card overflow-hidden shadow-2xl">
-            {/* Terminal mock */}
             <div className="absolute inset-0 bg-zinc-950 text-zinc-300 font-mono text-sm p-4 pt-12 overflow-hidden">
                <div className="absolute top-0 left-0 right-0 h-8 bg-zinc-900 border-b border-zinc-800 flex items-center px-4 gap-2">
                  <div className="w-3 h-3 rounded-full bg-red-500" />

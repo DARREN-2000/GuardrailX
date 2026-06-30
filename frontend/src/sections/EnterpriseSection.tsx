@@ -35,8 +35,10 @@ export default function EnterpriseSection() {
               </ul>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="rounded-full">
-                  Contact Sales
+                <Button size="lg" className="rounded-full" asChild>
+                  <a href="mailto:sales@guardrailx.com">
+                    Contact Sales
+                  </a>
                 </Button>
                 <Button size="lg" variant="outline" className="rounded-full">
                   View Security Docs
