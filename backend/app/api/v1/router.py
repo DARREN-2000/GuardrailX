@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 
+from app.api.v1.endpoints.guardrails import router as guardrails_router
 from app.api.v1.endpoints.health import router as health_router
 from app.api.v1.endpoints.policies import router as policies_router
 from app.api.v1.endpoints.providers import router as providers_router
@@ -14,3 +15,4 @@ api_router.include_router(tenants_router)
 api_router.include_router(users_router)
 api_router.include_router(providers_router)
 api_router.include_router(policies_router)
+api_router.include_router(guardrails_router)

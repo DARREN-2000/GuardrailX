@@ -2,8 +2,9 @@ from __future__ import annotations
 
 from uuid import UUID
 
-from app.schemas.common import ORMModel
 from pydantic import BaseModel
+
+from app.schemas.common import ORMModel
 
 
 class PolicyCreate(ORMModel):
@@ -22,8 +23,10 @@ class PolicyRead(ORMModel):
     status: str
     owner_user_id: UUID | None = None
 
+
 class PolicyEvaluateRequest(BaseModel):
     prompt: str
+
 
 class PolicyEvaluateResponse(BaseModel):
     is_safe: bool

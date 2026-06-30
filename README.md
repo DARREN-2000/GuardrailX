@@ -8,6 +8,16 @@
 
 GuardrailX is a starter framework for building guardrails around LLM-driven applications. It includes a FastAPI backend, a Vite + React frontend, infrastructure scaffolding, and policy templates.
 
+## Core Capabilities (Implemented)
+- **PII Redaction**: Detects and redacts emails, phone numbers, credit cards, IBANs, IP addresses, and person names using Presidio and regex.
+- **Prompt Injection Detection**: Detects instruction-overrides and delimiter-based attacks.
+- **Jailbreak Detection**: Detects DAN-style prompts, developer mode requests, base64 obfuscation, and persona escapes.
+- **Content Safety Filter**: Evaluates text against violence, self-harm, sexual, and hate lexicons.
+- **Risk-Based Enforcement**: Combined evaluation engine that decides whether to allow, redact, or block prompts.
+
+## Roadmap (Planned)
+- Hallucination-risk scoring.
+
 ## High-Level Architecture
 
 ![Architecture](assets/architecture.svg)
