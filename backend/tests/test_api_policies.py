@@ -31,11 +31,11 @@ async def test_evaluate_policy_endpoint():
     policy_id = uuid.uuid4()
 
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
-        response = await ac.post(f"/api/v1/policies/{policy_id}/evaluate", json={"prompt": "test prompt"})
+        response = await ac.post(f"/api/v1/guardrails/evaluate", json={"text": "test prompt"})
 
     assert response.status_code == 200
     data = response.json()
-    assert data["is_safe"] is True
-    assert data["policy"] == "test_policy"
+    assert data["decision"] == "allow"
+    assert "reasons" in data
 
     app.dependency_overrides.clear()
