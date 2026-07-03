@@ -10,7 +10,7 @@ def test_content_safety_violence():
 
 
 def test_content_safety_self_harm():
-    result = analyze_content_safety("I feel like I want to commit suicide today.")
+    result = analyze_content_safety("I feel like I want to commit suicide today and end it all.")
     assert result["category_scores"]["self_harm"] > 0.0
     assert result["blocked"] is True
 
@@ -28,22 +28,22 @@ def test_content_safety_hate():
 
 
 def test_content_safety_multiple():
-    result = analyze_content_safety("I want to kill myself and I hate everyone.")
+    result = analyze_content_safety("I want to kill myself and end it all, and I hate everyone.")
     assert result["category_scores"]["self_harm"] > 0.0
     assert result["category_scores"]["hate"] > 0.0
     assert result["blocked"] is True
 
 
 def test_content_safety_borderline():
-    # Only 1 match, score 0.6, default threshold 0.5 -> blocked
-    result = analyze_content_safety("This is a weapon.")
+    # Only 2 matches gives score 0.6, default threshold 0.5 -> blocked
+    result = analyze_content_safety("This is a weapon that will kill.")
     assert pytest.approx(result["category_scores"]["violence"]) == 0.6
     assert result["blocked"] is True
 
 
 def test_content_safety_custom_threshold():
-    # Only 1 match, score 0.6, threshold 0.7 -> not blocked
-    result = analyze_content_safety("This is a weapon.", threshold=0.7)
+    # 2 matches give score 0.6, threshold 0.7 -> not blocked
+    result = analyze_content_safety("This is a weapon that will kill.", threshold=0.7)
     assert pytest.approx(result["category_scores"]["violence"]) == 0.6
     assert result["blocked"] is False
 
@@ -75,4 +75,11 @@ def test_content_safety_clean_4():
 def test_content_safety_clean_5():
     result = analyze_content_safety("What is the square root of 144?")
     assert sum(result["category_scores"].values()) == 0.0
+    assert result["blocked"] is False
+
+
+def test_content_safety_single_match():
+    # Only 1 match gives a score of 0.4 which is below the 0.5 threshold
+    result = analyze_content_safety("I hate this bug.")
+    assert pytest.approx(result["category_scores"]["hate"]) == 0.4
     assert result["blocked"] is False
