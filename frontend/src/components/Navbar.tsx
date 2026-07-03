@@ -22,6 +22,11 @@ export default function Navbar() {
           <Button variant="ghost" size="sm" className="hidden sm:inline-flex text-muted-foreground hover:text-foreground">
             Documentation
           </Button>
+          <Link to="/dashboard">
+            <Button variant="ghost" size="sm" className="hidden sm:inline-flex text-primary hover:text-primary/80 border border-primary/20 bg-primary/10 mr-2">
+              Playground
+            </Button>
+          </Link>
           <Button size="sm" className="h-8 rounded-full px-4">Get Started</Button>
         </div>
       </div>
