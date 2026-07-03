@@ -76,3 +76,15 @@ def test_jailbreak_clean_6():
     result = detect_jailbreak("Give me a list of the top 10 movies of all time.")
     assert result["risk_score"] == 0.0
     assert len(result["matched_signals"]) == 0
+
+
+def test_jailbreak_clean_base64():
+    result = detect_jailbreak("The token is a1b2c3d4e5f6g7h8i9j0 and you must use it.")
+    assert result["risk_score"] == 0.0
+    assert len(result["matched_signals"]) == 0
+
+
+def test_jailbreak_clean_leetspeak():
+    result = detect_jailbreak("My address is 123 Main St and my phone is 555-1234, plus my password is just a1b2c3d4!")
+    assert result["risk_score"] == 0.0
+    assert len(result["matched_signals"]) == 0

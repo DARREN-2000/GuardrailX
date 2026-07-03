@@ -3,10 +3,10 @@
 [![CI](https://github.com/DARREN-2000/GuardrailX/actions/workflows/ci.yml/badge.svg)](https://github.com/DARREN-2000/GuardrailX/actions/workflows/ci.yml) [![Pages build](https://github.com/DARREN-2000/GuardrailX/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/DARREN-2000/GuardrailX/actions/workflows/deploy-pages.yml)
 
 <p align="center">
-  ![GuardrailX animated header](assets/readme-animated.svg)
+  <img src="assets/readme-animated.svg" alt="GuardrailX animated header" align="center" />
 </p>
 
-GuardrailX is a starter framework for building guardrails around LLM-driven applications. It includes a FastAPI backend, a Vite + React frontend, infrastructure scaffolding, and policy templates.
+It includes a FastAPI backend, a Vite + React frontend, infrastructure scaffolding, and policy templates.
 
 ## Core Capabilities (Implemented)
 - **PII Redaction**: Detects and redacts emails, phone numbers, credit cards, IBANs, IP addresses, and person names using Presidio and regex.
@@ -17,6 +17,12 @@ GuardrailX is a starter framework for building guardrails around LLM-driven appl
 
 ## Roadmap (Planned)
 - Hallucination-risk scoring.
+
+## Guardrail Playground
+
+<p align="center">
+  <img src="docs/screenshots/dashboard.png" alt="GuardrailX Dashboard" align="center" />
+</p>
 
 ## High-Level Architecture
 
@@ -33,12 +39,6 @@ GuardrailX is a starter framework for building guardrails around LLM-driven appl
 ## Audit Platform
 
 ![Audit Platform](assets/audit.svg)
-
-**Current status**
-
-- Backend health tests pass locally (I ran `backend/tests/test_health.py`).
-- I made small fixes to improve testability (database engine creation guarded when OTEL is disabled, and a SQLAlchemy column compatibility fix).
-- The full application requires a PostgreSQL instance and additional dependencies listed in `backend/pyproject.toml`.
 
 ## Quickstart — Backend
 
@@ -84,6 +84,15 @@ PRs welcome. Keep changes focused and add tests for behavior changes.
 ## License
 
 See the `LICENSE` file.
+
+## Deploying the Backend (Render)
+
+You can deploy the backend easily to [Render](https://render.com) using the included `render.yaml` configuration.
+
+1. Connect your GitHub repository to Render.
+2. Select **Blueprint** and point it to the `render.yaml` file in the root of the repository.
+3. Render will provision a PostgreSQL database and a Python web service, automatically applying database migrations (`alembic upgrade head`) and starting the FastAPI server.
+4. Once deployed, take your Render URL (e.g., `https://guardrailx-backend.onrender.com`) and update your frontend's environment variable `VITE_API_BASE_URL` to point to it.
 
 ## Local end-to-end with Docker Compose
 

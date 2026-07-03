@@ -20,8 +20,8 @@ def analyze_content_safety(text: str, threshold: float = 0.5) -> Dict[str, Any]:
                 matches += 1
 
         if matches > 0:
-            # Simple scoring: 0.4 per match, max 1.0
-            category_scores[category] = min(1.0, matches * 0.4 + 0.2)
+            # Simple scoring: 0.2 per match, max 1.0 (requires at least 2 matches to cross 0.5 threshold)
+            category_scores[category] = min(1.0, matches * 0.2 + 0.2)
 
     blocked = any(score >= threshold for score in category_scores.values())
 
