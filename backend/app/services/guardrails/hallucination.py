@@ -10,6 +10,7 @@ HALLUCINATION_PATTERNS = [
     (r"(?i)\b(?:stock\s+price\s+of|market\s+trend)\b", "financial_data"),
 ]
 
+
 def assess_hallucination_risk(text: str) -> Dict[str, Any]:
     matched_signals = []
 

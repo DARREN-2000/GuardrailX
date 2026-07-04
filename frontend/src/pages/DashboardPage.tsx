@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Loader2, Shield, AlertTriangle, ShieldAlert, CheckCircle2 } from "lucide-react";
+import { Loader2, Shield, AlertTriangle, ShieldAlert, CheckCircle2, Code2, Eye, Copy, Check, History, Clock, Trash2 } from "lucide-react";
 
 interface EvaluationResult {
   decision: "allow" | "redact" | "block";
@@ -107,6 +107,10 @@ export default function DashboardPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [useMock, setUseMock] = useState(false); // Track if we fell back to mock
+  const [latency, setLatency] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState<"visual" | "json" | "history">("visual");
+  const [history, setHistory] = useState<Array<{ id: string, prompt: string, result: EvaluationResult, timestamp: Date }>>([]);
+  const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({});
 
   const samplePrompts = [
     "What is the capital of France?",
@@ -123,7 +127,9 @@ export default function DashboardPage() {
     setError(null);
     setResult(null);
     setUseMock(false);
+    setLatency(null);
 
+    const startTime = performance.now();
     const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
 
     try {
@@ -141,6 +147,8 @@ export default function DashboardPage() {
 
       const data: EvaluationResult = await response.json();
       setResult(data);
+      setLatency(Math.round(performance.now() - startTime));
+      setHistory(prev => [{ id: Math.random().toString(36).substring(7), prompt: inputText, result: data, timestamp: new Date() }, ...prev]);
     } catch (err: any) {
       console.warn("API request failed, falling back to mock data.", err);
       // Simulate network delay for mock
@@ -156,10 +164,15 @@ export default function DashboardPage() {
 
       setResult(mockResult);
       setUseMock(true);
+      setLatency(Math.round(performance.now() - startTime));
+      setHistory(prev => [{ id: Math.random().toString(36).substring(7), prompt: inputText, result: mockResult, timestamp: new Date() }, ...prev]);
     } finally {
       setIsLoading(false);
     }
   };
+
+  const wordCount = inputText.trim() ? inputText.trim().split(/\s+/).length : 0;
+  const charCount = inputText.length;
 
   const getDecisionColor = (decision: string) => {
     switch (decision) {
@@ -177,6 +190,24 @@ export default function DashboardPage() {
       case 'redact': return <AlertTriangle className="w-4 h-4 mr-1.5" />;
       default: return null;
     }
+  };
+
+  const handleCopy = async (text: string, id: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedStates(prev => ({ ...prev, [id]: true }));
+      setTimeout(() => setCopiedStates(prev => ({ ...prev, [id]: false })), 2000);
+    } catch (err) {
+      console.error("Failed to copy text", err);
+    }
+  };
+
+  const handleClear = () => {
+    setInputText("");
+    setResult(null);
+    setLatency(null);
+    setUseMock(false);
+    setError(null);
   };
 
   return (
@@ -201,6 +232,10 @@ export default function DashboardPage() {
                 <label htmlFor="prompt-input" className="block text-sm font-medium text-[#EDEDED]">
                   Input Prompt
                 </label>
+                <div className="flex gap-3 text-xs text-[#666666] font-mono">
+                  <span>{wordCount} words</span>
+                  <span>{charCount} chars</span>
+                </div>
               </div>
 
               <div className="flex flex-wrap gap-2 mb-2">
@@ -224,20 +259,30 @@ export default function DashboardPage() {
                 className="w-full h-64 p-4 bg-[#111111] border border-[#333333] rounded-lg text-sm text-[#EDEDED] focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 resize-none transition-colors font-mono"
               />
             </div>
-            <button
-              onClick={handleEvaluate}
-              disabled={isLoading || !inputText.trim()}
-              className="w-full py-3 px-4 bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-semibold rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(var(--primary),0.2)]"
-            >
-              {isLoading ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Evaluating...
-                </>
-              ) : (
-                "Run Evaluation"
-              )}
-            </button>
+            <div className="flex gap-3">
+              <button
+                onClick={handleClear}
+                disabled={isLoading || (!inputText && !result)}
+                className="px-4 py-3 bg-[#1A1A1A] hover:bg-[#2A2A2A] text-[#A1A1AA] hover:text-[#EDEDED] border border-[#333] text-sm font-semibold rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                title="Clear input and results"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+              <button
+                onClick={handleEvaluate}
+                disabled={isLoading || !inputText.trim()}
+                className="flex-1 py-3 px-4 bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-semibold rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(var(--primary),0.2)]"
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Evaluating...
+                  </>
+                ) : (
+                  "Run Evaluation"
+                )}
+              </button>
+            </div>
             {error && !useMock && <div className="text-red-500 text-sm">{error}</div>}
             {useMock && (
               <div className="text-xs text-yellow-500/80 bg-yellow-500/10 p-2 rounded border border-yellow-500/20 flex items-start gap-2">
@@ -255,15 +300,46 @@ export default function DashboardPage() {
                   <Shield className="w-5 h-5 text-primary" />
                   Analysis Results
                 </h2>
-                {result && (
-                  <div className={`px-3 py-1.5 rounded-full text-xs font-semibold flex items-center tracking-wide border ${getDecisionColor(result.decision)}`}>
-                    {getDecisionIcon(result.decision)}
-                    {result.decision.toUpperCase()}
-                  </div>
-                )}
+                <div className="flex items-center gap-3">
+                  {latency !== null && (
+                    <span className="text-xs text-[#888888] font-mono bg-[#1A1A1A] px-2 py-1 rounded border border-[#333]">
+                      {latency}ms
+                    </span>
+                  )}
+                  {result && (
+                    <div className={`px-3 py-1.5 rounded-full text-xs font-semibold flex items-center tracking-wide border ${getDecisionColor(result.decision)}`}>
+                      {getDecisionIcon(result.decision)}
+                      {result.decision.toUpperCase()}
+                    </div>
+                  )}
+                </div>
               </div>
 
-              {!result && !isLoading ? (
+              <div className="flex gap-2 mb-4">
+                <button
+                  onClick={() => setActiveTab("visual")}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors flex items-center gap-1.5 ${activeTab === 'visual' ? 'bg-[#222] text-[#EDEDED]' : 'bg-transparent text-[#888] hover:text-[#EDEDED] hover:bg-[#1A1A1A]'}`}
+                >
+                  <Eye className="w-3.5 h-3.5" />
+                  Visual Analysis
+                </button>
+                <button
+                  onClick={() => setActiveTab("json")}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors flex items-center gap-1.5 ${activeTab === 'json' ? 'bg-[#222] text-[#EDEDED]' : 'bg-transparent text-[#888] hover:text-[#EDEDED] hover:bg-[#1A1A1A]'}`}
+                >
+                  <Code2 className="w-3.5 h-3.5" />
+                  Raw JSON
+                </button>
+                <button
+                  onClick={() => setActiveTab("history")}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors flex items-center gap-1.5 ${activeTab === 'history' ? 'bg-[#222] text-[#EDEDED]' : 'bg-transparent text-[#888] hover:text-[#EDEDED] hover:bg-[#1A1A1A]'}`}
+                >
+                  <History className="w-3.5 h-3.5" />
+                  History ({history.length})
+                </button>
+              </div>
+
+              {!result && !isLoading && activeTab !== 'history' ? (
                 <div className="flex-1 flex flex-col items-center justify-center text-[#666666] border-2 border-dashed border-[#222] rounded-lg p-8 text-center bg-[#0A0A0A]/50">
                   <Shield className="w-12 h-12 mb-4 opacity-20" />
                   <p className="text-sm">Submit a prompt to view detailed evaluation results</p>
@@ -274,7 +350,7 @@ export default function DashboardPage() {
                   <Loader2 className="w-8 h-8 animate-spin mb-4" />
                   <p className="text-sm font-medium animate-pulse">Analyzing prompt across 5 security layers...</p>
                 </div>
-              ) : (
+              ) : activeTab === 'visual' ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
                   {/* PII Panel */}
                   <div className="p-5 bg-[#0A0A0A] border border-[#222222] rounded-lg space-y-3 shadow-inner">
@@ -292,8 +368,17 @@ export default function DashboardPage() {
                           <div className="text-yellow-500 text-xs font-medium flex items-center gap-1.5">
                             <AlertTriangle className="w-3.5 h-3.5"/> {result!.per_detector_results.pii.entities.length} entities found
                           </div>
-                          <div className="p-3 bg-[#111] rounded border border-[#222] text-[#AAA] break-words font-mono text-xs leading-relaxed">
-                            {result!.per_detector_results.pii.redacted_text}
+                          <div className="relative group/pii">
+                            <div className="p-3 bg-[#111] rounded border border-[#222] text-[#AAA] break-words font-mono text-xs leading-relaxed pr-10">
+                              {result!.per_detector_results.pii.redacted_text}
+                            </div>
+                            <button
+                              onClick={() => handleCopy(result!.per_detector_results.pii.redacted_text, 'pii_redacted')}
+                              className="absolute right-2 top-2 p-1.5 bg-[#222] hover:bg-[#333] text-[#AAA] hover:text-[#FFF] rounded border border-[#444] opacity-0 group-hover/pii:opacity-100 transition-opacity"
+                              title="Copy redacted text"
+                            >
+                              {copiedStates['pii_redacted'] ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
+                            </button>
                           </div>
                         </div>
                       )}
@@ -414,7 +499,52 @@ export default function DashboardPage() {
                     </div>
                   </div>
                 </div>
-              )}
+              ) : activeTab === 'json' ? (
+                <div className="flex-1 relative group">
+                  <pre className="p-4 bg-[#0A0A0A] border border-[#222] rounded-lg text-xs font-mono text-[#AAA] overflow-x-auto h-full max-h-[500px] pr-12">
+                    <code>{JSON.stringify(result, null, 2)}</code>
+                  </pre>
+                  <button
+                    onClick={() => handleCopy(JSON.stringify(result, null, 2), 'raw_json')}
+                    className="absolute right-4 top-4 p-2 bg-[#222] hover:bg-[#333] text-[#AAA] hover:text-[#FFF] rounded border border-[#444] opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
+                    title="Copy JSON"
+                  >
+                    {copiedStates['raw_json'] ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                  </button>
+                </div>
+              ) : activeTab === 'history' ? (
+                <div className="flex-1 flex flex-col space-y-3 overflow-y-auto max-h-[500px] pr-2 custom-scrollbar">
+                  {history.length === 0 ? (
+                    <div className="flex-1 flex flex-col items-center justify-center text-[#666] p-8 text-center bg-[#0A0A0A]/50 rounded-lg border border-[#222]">
+                      <History className="w-8 h-8 mb-3 opacity-20" />
+                      <p className="text-sm">No evaluation history yet.</p>
+                    </div>
+                  ) : (
+                    history.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => {
+                          setInputText(item.prompt);
+                          setResult(item.result);
+                          setActiveTab("visual");
+                        }}
+                        className="text-left w-full p-4 bg-[#0A0A0A] border border-[#222] hover:border-[#444] rounded-lg transition-colors flex flex-col gap-2 group"
+                      >
+                        <div className="flex items-start justify-between gap-4">
+                          <p className="text-sm text-[#EDEDED] font-mono truncate">{item.prompt}</p>
+                          <div className={`px-2 py-0.5 rounded text-[10px] font-semibold border ${getDecisionColor(item.result.decision)}`}>
+                            {item.result.decision.toUpperCase()}
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-[#666]">
+                          <Clock className="w-3 h-3" />
+                          {item.timestamp.toLocaleTimeString()}
+                        </div>
+                      </button>
+                    ))
+                  )}
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
