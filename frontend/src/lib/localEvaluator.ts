@@ -45,7 +45,6 @@ export function evaluateLocally(text: string): EvaluationResult {
   };
 
   // 1. PII Detection
-  let redactedText = text;
   Object.entries(PII_PATTERNS).forEach(([type, regex]) => {
     let match;
     while ((match = regex.exec(text)) !== null) {
