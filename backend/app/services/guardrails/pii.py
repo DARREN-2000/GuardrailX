@@ -6,11 +6,13 @@ from presidio_anonymizer import AnonymizerEngine
 _analyzer = None
 _anonymizer = None
 
+
 def get_analyzer() -> AnalyzerEngine:
     global _analyzer
     if _analyzer is None:
         _analyzer = AnalyzerEngine()
     return _analyzer
+
 
 def get_anonymizer() -> AnonymizerEngine:
     global _anonymizer
