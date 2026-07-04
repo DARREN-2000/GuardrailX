@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 from app.services.guardrails.content_safety import analyze_content_safety
 from app.services.guardrails.enforcement import evaluate_guardrails
+from app.services.guardrails.hallucination import assess_hallucination_risk
 from app.services.guardrails.jailbreak import detect_jailbreak
 from app.services.guardrails.pii import redact_pii
 from app.services.guardrails.prompt_injection import detect_prompt_injection
@@ -34,6 +35,11 @@ async def analyze_jailbreak(request: TextRequest) -> Dict[str, Any]:
 @router.post("/content-safety")
 async def check_content_safety(request: TextRequest) -> Dict[str, Any]:
     return analyze_content_safety(request.text)
+
+
+@router.post("/hallucination")
+async def check_hallucination(request: TextRequest) -> Dict[str, Any]:
+    return assess_hallucination_risk(request.text)
 
 
 @router.post("/evaluate")

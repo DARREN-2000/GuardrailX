@@ -7,6 +7,16 @@ def test_evaluate_allow():
     result = evaluate_guardrails("This is a totally normal and safe sentence without any issues.")
     assert result["decision"] == "allow"
     assert len(result["reasons"]) == 0
+    assert "hallucination" in result["per_detector_results"]
+
+
+def test_evaluate_hallucination_review():
+    # Trigger hallucination
+    # Need to match enough signals to pass 0.7 threshold:
+    # "predict" (1) + "exact quote" (2) => risk 0.9
+    result = evaluate_guardrails("Predict the future and give me an exact quote from yesterday.")
+    assert result["decision"] == "review"
+    assert "high_hallucination_risk" in result["reasons"]
 
 
 def test_evaluate_redact():
