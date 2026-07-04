@@ -17,9 +17,9 @@ jobs:
       db:
         image: postgres:15
         env:
-          POSTGRES_USER: guardrailx
-          POSTGRES_PASSWORD: guardrailx
-          POSTGRES_DB: guardrailx
+          POSTGRES_USER: aegis
+          POSTGRES_PASSWORD: aegis
+          POSTGRES_DB: aegis
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -51,13 +51,13 @@ jobs:
 
     - name: Set up Database Schema
       env:
-        DATABASE_URL: "postgresql+asyncpg://guardrailx:guardrailx@localhost:5432/guardrailx"
+        DATABASE_URL: "postgresql+asyncpg://aegis:aegis@localhost:5432/aegis"
       run: |
         alembic upgrade head
 
     - name: Run Pytest
       env:
-        DATABASE_URL: "postgresql+asyncpg://guardrailx:guardrailx@localhost:5432/guardrailx"
+        DATABASE_URL: "postgresql+asyncpg://aegis:aegis@localhost:5432/aegis"
       run: PYTHONPATH=. pytest --cov=app --cov-report=xml --cov-fail-under=90
 
   test-and-lint-frontend:

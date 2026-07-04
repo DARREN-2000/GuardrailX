@@ -1,6 +1,6 @@
-You are building GuardrailX.
+You are building Aegis.
 
-GuardrailX is a production-grade policy-driven AI governance runtime for enterprise LLM workloads.
+Aegis is a production-grade policy-driven AI governance runtime for enterprise LLM workloads.
 
 Architecture decisions are fixed:
 

@@ -11,7 +11,7 @@ export default function ArchitectureSection() {
               Opinionated boundaries,<br />clean dependencies
             </h2>
             <p className="text-lg text-white/50 mb-8 font-light leading-relaxed">
-              GuardrailX is designed as a modular proxy. It sits between your application and your LLM providers, intercepting requests to enforce policies before they reach the model.
+              Aegis is designed as a modular proxy. It sits between your application and your LLM providers, intercepting requests to enforce policies before they reach the model.
             </p>
 
             <ul className="space-y-8">
@@ -46,7 +46,7 @@ export default function ArchitectureSection() {
                 </div>
 
                 <div className="bg-white/[0.02] p-6 rounded-xl border border-white/10 relative overflow-hidden">
-                  <h3 className="font-medium mb-4 text-white">GuardrailX Proxy</h3>
+                  <h3 className="font-medium mb-4 text-white">Aegis Proxy</h3>
                   <div className="grid gap-3">
                     <div className="bg-[#050505] p-3 rounded-lg text-sm border border-white/5 text-center text-white/70 font-light">Auth & Rate Limiting</div>
                     <div className="bg-[#050505] p-3 rounded-lg text-sm border border-white/5 text-center text-white/70 font-light">Policy Engine (PII, Safety)</div>

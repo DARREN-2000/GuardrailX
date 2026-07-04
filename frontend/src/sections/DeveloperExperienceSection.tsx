@@ -13,7 +13,7 @@ export default function DeveloperExperienceSection() {
               Integrates in minutes,<br/>not months.
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Just change your API base URL. GuardrailX is fully compatible with OpenAI and Anthropic SDKs, meaning you don't need to rewrite your application code.
+              Just change your API base URL. Aegis is fully compatible with OpenAI and Anthropic SDKs, meaning you don't need to rewrite your application code.
             </p>
             <div className="grid grid-cols-2 gap-4">
               {['LangChain', 'LlamaIndex', 'OpenAI SDK', 'Vercel AI SDK'].map(fw => (
@@ -32,10 +32,10 @@ export default function DeveloperExperienceSection() {
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  // 1. Point to GuardrailX proxy
+  // 1. Point to Aegis proxy
   baseURL: "https://aegis.your-domain.com/v1",
   defaultHeaders: {
-    // 2. Pass your GuardrailX token
+    // 2. Pass your Aegis token
     "x-aegis-token": process.env.AEGIS_TOKEN
   }
 });

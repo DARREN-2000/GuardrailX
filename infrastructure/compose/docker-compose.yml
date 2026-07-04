@@ -4,13 +4,13 @@ services:
   db:
     image: postgres:15
     environment:
-      POSTGRES_USER: guardrailx
-      POSTGRES_PASSWORD: guardrailx
-      POSTGRES_DB: guardrailx
+      POSTGRES_USER: aegis
+      POSTGRES_PASSWORD: aegis
+      POSTGRES_DB: aegis
     volumes:
       - db_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U guardrailx -d guardrailx"]
+      test: ["CMD-SHELL", "pg_isready -U aegis -d aegis"]
       interval: 5s
       retries: 10
     ports:
@@ -20,7 +20,7 @@ services:
     image: ghcr.io/mlflow/mlflow:v2.10.0
     command: mlflow server --host 0.0.0.0 --port 5000 --default-artifact-root /mlflow/artifacts
     environment:
-      MLFLOW_BACKEND_STORE_URI: "postgresql://guardrailx:guardrailx@db:5432/guardrailx"
+      MLFLOW_BACKEND_STORE_URI: "postgresql://aegis:aegis@db:5432/aegis"
     ports:
       - "5000:5000"
     volumes:
@@ -36,7 +36,7 @@ services:
     env_file:
       - ../../backend/.env
     environment:
-      DATABASE_URL: "postgresql+asyncpg://guardrailx:guardrailx@db:5432/guardrailx"
+      DATABASE_URL: "postgresql+asyncpg://aegis:aegis@db:5432/aegis"
       OTEL_ENABLED: "false"
       MLFLOW_TRACKING_URI: "http://mlflow:5000"
     depends_on:

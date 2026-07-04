@@ -13,7 +13,7 @@ export default function CtaSection() {
           Ready to secure your AI workloads?
         </h2>
         <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-          Start using GuardrailX today. Deploy your first policy in under 5 minutes.
+          Start using Aegis today. Deploy your first policy in under 5 minutes.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button size="lg" className="rounded-full px-8 h-14 text-base w-full sm:w-auto">

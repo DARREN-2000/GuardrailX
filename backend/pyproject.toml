@@ -3,9 +3,9 @@ requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "guardrailx-backend"
+name = "aegis-backend"
 version = "0.1.0"
-description = "GuardrailX backend"
+description = "Aegis backend"
 requires-python = ">=3.12"
 dependencies = [
   "fastapi>=0.115",

@@ -15,7 +15,7 @@ export default function PerformanceSection() {
             Built for speed
           </h2>
           <p className="text-lg text-white/50 font-light">
-            Security shouldn't compromise user experience. GuardrailX is written in Rust to ensure minimal overhead.
+            Security shouldn't compromise user experience. Aegis is written in Rust to ensure minimal overhead.
           </p>
         </div>
 

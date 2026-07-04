@@ -1,9 +1,9 @@
-# GuardrailX
+# Aegis
 
-[![CI](https://github.com/DARREN-2000/GuardrailX/actions/workflows/ci.yml/badge.svg)](https://github.com/DARREN-2000/GuardrailX/actions/workflows/ci.yml) [![Pages build](https://github.com/DARREN-2000/GuardrailX/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/DARREN-2000/GuardrailX/actions/workflows/deploy-pages.yml)
+[![CI](https://github.com/DARREN-2000/Aegis/actions/workflows/ci.yml/badge.svg)](https://github.com/DARREN-2000/Aegis/actions/workflows/ci.yml) [![Pages build](https://github.com/DARREN-2000/Aegis/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/DARREN-2000/Aegis/actions/workflows/deploy-pages.yml)
 
 <p align="center">
-  <img src="assets/readme-animated.svg" alt="GuardrailX animated header" align="center" />
+  <img src="assets/readme-animated.svg" alt="Aegis animated header" align="center" />
 </p>
 
 It includes a FastAPI backend, a Vite + React frontend, infrastructure scaffolding, and policy templates.
@@ -21,7 +21,7 @@ It includes a FastAPI backend, a Vite + React frontend, infrastructure scaffoldi
 ## Guardrail Playground
 
 <p align="center">
-  <img src="docs/screenshots/dashboard.png" alt="GuardrailX Dashboard" align="center" />
+  <img src="docs/screenshots/dashboard.png" alt="Aegis Dashboard" align="center" />
 </p>
 
 ## High-Level Architecture
@@ -92,7 +92,7 @@ You can deploy the backend easily to [Render](https://render.com) using the incl
 1. Connect your GitHub repository to Render.
 2. Select **Blueprint** and point it to the `render.yaml` file in the root of the repository.
 3. Render will provision a PostgreSQL database and a Python web service, automatically applying database migrations (`alembic upgrade head`) and starting the FastAPI server.
-4. Once deployed, take your Render URL (e.g., `https://guardrailx-backend.onrender.com`) and update your frontend's environment variable `VITE_API_BASE_URL` to point to it.
+4. Once deployed, take your Render URL (e.g., `https://aegis-backend.onrender.com`) and update your frontend's environment variable `VITE_API_BASE_URL` to point to it.
 
 ## Local end-to-end with Docker Compose
 
@@ -108,6 +108,6 @@ docker compose up --build
 
 Notes:
 - Compose sets `OTEL_ENABLED=false` for the backend to avoid requiring tracing exporters during local runs.
-- The backend uses `DATABASE_URL=postgresql+asyncpg://guardrailx:guardrailx@db:5432/guardrailx` by default; update `backend/.env` if you need different credentials.
+- The backend uses `DATABASE_URL=postgresql+asyncpg://aegis:aegis@db:5432/aegis` by default; update `backend/.env` if you need different credentials.
 
 If you'd like, I can add a `Makefile` or `docker-entrypoint` scripts to run migrations automatically on container startup.

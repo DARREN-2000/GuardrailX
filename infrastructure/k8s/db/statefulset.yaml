@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: guardrailx-db
+  name: aegis-db
 spec:
-  serviceName: "guardrailx-db"
+  serviceName: "aegis-db"
   replicas: 1
   selector:
     matchLabels:
-      app: guardrailx-db
+      app: aegis-db
   template:
     metadata:
       labels:
-        app: guardrailx-db
+        app: aegis-db
     spec:
       containers:
         - name: postgres
@@ -22,17 +22,17 @@ spec:
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: guardrailx-db-postgres-secret
+                  name: aegis-db-postgres-secret
                   key: postgres_user
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: guardrailx-db-postgres-secret
+                  name: aegis-db-postgres-secret
                   key: postgres_password
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
-                  name: guardrailx-db-postgres-secret
+                  name: aegis-db-postgres-secret
                   key: postgres_db
           volumeMounts:
             - name: db-data

@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guardrailx-mlflow
+  name: aegis-mlflow
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: guardrailx-mlflow
+      app: aegis-mlflow
   template:
     metadata:
       labels:
-        app: guardrailx-mlflow
+        app: aegis-mlflow
     spec:
       containers:
         - name: mlflow
@@ -20,7 +20,7 @@ spec:
             - name: MLFLOW_BACKEND_STORE_URI
               valueFrom:
                 secretKeyRef:
-                  name: guardrailx-db-secret
+                  name: aegis-db-secret
                   key: mlflow_database_url
           ports:
             - containerPort: 5000

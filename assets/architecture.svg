@@ -15,7 +15,7 @@
     <text x="16" y="32" fill="#cbd5e1" font-family="Inter, Arial" font-size="14">Enterprise Applications</text>
 
     <rect x="260" y="0" width="220" height="48" rx="8" fill="#081226" stroke="#16233a" />
-    <text x="276" y="32" fill="#cbd5e1" font-family="Inter, Arial" font-size="14">GuardrailX API</text>
+    <text x="276" y="32" fill="#cbd5e1" font-family="Inter, Arial" font-size="14">Aegis API</text>
 
     <rect x="520" y="0" width="220" height="48" rx="8" fill="#081226" stroke="#16233a" />
     <text x="536" y="32" fill="#cbd5e1" font-family="Inter, Arial" font-size="14">Provider Router</text>

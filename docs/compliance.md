@@ -1,6 +1,6 @@
 # Compliance
 
-GuardrailX is built with enterprise security and compliance in mind from day one.
+Aegis is built with enterprise security and compliance in mind from day one.
 
 ## Core Compliance Features
 

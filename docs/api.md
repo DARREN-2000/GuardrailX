@@ -1,6 +1,6 @@
 # API
 
-This document details the backend APIs available in GuardrailX.
+This document details the backend APIs available in Aegis.
 
 ## Core Endpoints
 
@@ -14,4 +14,4 @@ This document details the backend APIs available in GuardrailX.
 
 ## Integration
 
-GuardrailX's endpoints are built using FastAPI and are fully documented automatically via Swagger UI. Once the backend is running, navigate to `http://localhost:8000/docs` to see the complete, interactive OpenAPI schema.
+Aegis's endpoints are built using FastAPI and are fully documented automatically via Swagger UI. Once the backend is running, navigate to `http://localhost:8000/docs` to see the complete, interactive OpenAPI schema.

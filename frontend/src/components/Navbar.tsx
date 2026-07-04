@@ -10,7 +10,7 @@ export default function Navbar() {
           <div className="flex h-7 w-7 items-center justify-center rounded bg-primary text-primary-foreground">
             <Shield className="h-4 w-4" />
           </div>
-          <span className="font-display font-medium tracking-tight text-lg">GuardrailX</span>
+          <span className="font-display font-medium tracking-tight text-lg">Aegis</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
           <Link to="#features" className="transition-colors hover:text-foreground">Features</Link>

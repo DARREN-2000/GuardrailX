@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://guardrailx.com/sitemap.xml
+Sitemap: https://aegis.com/sitemap.xml

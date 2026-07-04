@@ -15,13 +15,13 @@ class Settings(BaseSettings):
         case_sensitive=False,
     )
 
-    app_name: str = "GuardrailX"
+    app_name: str = "Aegis"
     environment: str = "development"
     api_v1_prefix: str = "/api/v1"
     log_level: str = "INFO"
     json_logs: bool = True
 
-    database_url: str = "postgresql+asyncpg://guardrailx:guardrailx@localhost:5432/guardrailx"
+    database_url: str = "postgresql+asyncpg://aegis:aegis@localhost:5432/aegis"
     database_echo: bool = False
     database_pool_size: int = 5
     database_max_overflow: int = 10
@@ -29,7 +29,7 @@ class Settings(BaseSettings):
     cors_origins: list[str] = Field(default_factory=lambda: ["http://localhost:3000", "http://localhost:5173"])
 
     otel_enabled: bool = True
-    otel_service_name: str = "guardrailx-backend"
+    otel_service_name: str = "aegis-backend"
     otel_exporter_otlp_endpoint: str | None = None
     otel_traces_sample_rate: float = 1.0
     otel_resource_attributes: dict[str, str] = Field(default_factory=dict)

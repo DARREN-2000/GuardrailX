@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: guardrailx-mlflow
+  name: aegis-mlflow
 spec:
   selector:
-    app: guardrailx-mlflow
+    app: aegis-mlflow
   ports:
     - protocol: TCP
       port: 5000

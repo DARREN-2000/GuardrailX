@@ -10,13 +10,13 @@ export default function HowItWorksSection() {
             How it works
           </h2>
           <p className="text-lg text-white/50 font-light">
-            Drop GuardrailX into your infrastructure and configure policies as code.
+            Drop Aegis into your infrastructure and configure policies as code.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            { step: "01", title: "Deploy the Proxy", desc: "Run the lightweight GuardrailX container in your VPC or use our managed cloud.", icon: Settings },
+            { step: "01", title: "Deploy the Proxy", desc: "Run the lightweight Aegis container in your VPC or use our managed cloud.", icon: Settings },
             { step: "02", title: "Write Policies", desc: "Define rate limits, PII redaction rules, and routing logic using YAML or TypeScript.", icon: Code },
             { step: "03", title: "Monitor Traffic", desc: "Watch requests flow through the proxy in real-time. Export traces to Datadog or Grafana.", icon: Activity }
           ].map((item, index) => (

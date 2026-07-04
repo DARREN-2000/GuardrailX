@@ -20,7 +20,7 @@ export default function HeroSection() {
           >
             <Badge variant="outline" className="mb-8 rounded-full border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80 backdrop-blur-md">
               <span className="flex h-1.5 w-1.5 rounded-full bg-white/80 mr-2" />
-              GuardrailX 1.0 is now available
+              Aegis 1.0 is now available
             </Badge>
           </motion.div>
 
@@ -57,7 +57,7 @@ export default function HeroSection() {
             </Button>
             <Button size="lg" variant="outline" className="rounded-full px-8 h-11 text-sm font-medium w-full sm:w-auto border-white/10 bg-white/5 hover:bg-white/10 text-white backdrop-blur-sm">
               <Terminal className="mr-2 h-4 w-4 text-white/60" />
-              npm install @guardrailx/node
+              npm install @aegis/node
             </Button>
           </motion.div>
         </div>
@@ -78,15 +78,15 @@ export default function HeroSection() {
               </div>
               <div className="ml-4 flex-1">
                 <div className="mx-auto h-5 w-48 rounded bg-white/5 flex items-center justify-center text-[10px] text-white/40 font-mono tracking-wider">
-                  guardrailx.config.ts
+                  aegis.config.ts
                 </div>
               </div>
             </div>
             <div className="p-6 overflow-x-auto">
               <pre className="text-sm font-mono leading-relaxed text-white/80">
                 <code className="block">
-                  <span className="text-[#c678dd]">import</span> {"{ GuardrailX }"} <span className="text-[#c678dd]">from</span> <span className="text-[#98c379]">'@guardrailx/node'</span>;{"\n\n"}
-                  <span className="text-[#c678dd]">export default</span> <span className="text-[#e5c07b]">new</span> GuardrailX({"{\n"}
+                  <span className="text-[#c678dd]">import</span> {"{ Aegis }"} <span className="text-[#c678dd]">from</span> <span className="text-[#98c379]">'@aegis/node'</span>;{"\n\n"}
+                  <span className="text-[#c678dd]">export default</span> <span className="text-[#e5c07b]">new</span> Aegis({"{\n"}
                   {"  "}projectId: <span className="text-[#98c379]">'prj_ai_governance_1'</span>,{"\n"}
                   {"  "}policies: [{"\n"}
                   {"    "}{"{"}{"\n"}

@@ -16,7 +16,7 @@ export default function EnterpriseSection() {
                 Enterprise-grade by design
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Deploy GuardrailX in your own VPC, connect to your existing SSO, and stream audit logs directly to your SIEM.
+                Deploy Aegis in your own VPC, connect to your existing SSO, and stream audit logs directly to your SIEM.
               </p>
 
               <ul className="space-y-4 mb-8">
@@ -36,7 +36,7 @@ export default function EnterpriseSection() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="rounded-full" asChild>
-                  <a href="mailto:sales@guardrailx.com">
+                  <a href="mailto:sales@aegis.com">
                     Contact Sales
                   </a>
                 </Button>

@@ -4,7 +4,7 @@
 Accepted
 
 ## Context
-We need a robust, performant foundation for the GuardrailX proxy and dashboard. It must handle high concurrency, provide structured relational data modeling, and offer a modern React frontend.
+We need a robust, performant foundation for the Aegis proxy and dashboard. It must handle high concurrency, provide structured relational data modeling, and offer a modern React frontend.
 
 ## Decisions
 

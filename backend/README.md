@@ -1,3 +1,3 @@
 # Backend
 
-FastAPI service layer for GuardrailX, including API entrypoints, domain services, repositories, schemas, database wiring, and observability hooks.
+FastAPI service layer for Aegis, including API entrypoints, domain services, repositories, schemas, database wiring, and observability hooks.

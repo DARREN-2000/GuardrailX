@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guardrailx-frontend
+  name: aegis-frontend
   labels:
-    app: guardrailx-frontend
+    app: aegis-frontend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: guardrailx-frontend
+      app: aegis-frontend
   template:
     metadata:
       labels:
-        app: guardrailx-frontend
+        app: aegis-frontend
     spec:
       containers:
         - name: frontend
-          image: guardrailx-frontend:latest
+          image: aegis-frontend:latest
           ports:
             - containerPort: 80

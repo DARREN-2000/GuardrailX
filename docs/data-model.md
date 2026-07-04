@@ -1,6 +1,6 @@
 # Data Model
 
-The GuardrailX PostgreSQL database contains several core entities that model the AI governance platform:
+The Aegis PostgreSQL database contains several core entities that model the AI governance platform:
 
 ## Core Entities
 

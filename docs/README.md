@@ -1,3 +1,3 @@
 # Docs
 
-Architecture, API, data model, observability, compliance, and decision records for GuardrailX.
+Architecture, API, data model, observability, compliance, and decision records for Aegis.

@@ -1,6 +1,6 @@
 # Observability
 
-GuardrailX uses an industry-standard open source observability stack to provide deep visibility into LLM usage and proxy performance.
+Aegis uses an industry-standard open source observability stack to provide deep visibility into LLM usage and proxy performance.
 
 ## Stack
 

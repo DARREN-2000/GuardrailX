@@ -7,12 +7,12 @@ import {
 
 const faqs = [
   {
-    q: "Does GuardrailX add latency to my requests?",
-    a: "GuardrailX is written in Rust and highly optimized. Standard policy evaluation (routing, basic rate limits) adds < 2ms of latency. Complex policies like synchronous PII redaction or ML-based toxicity checks take slightly longer, but can often run asynchronously."
+    q: "Does Aegis add latency to my requests?",
+    a: "Aegis is written in Rust and highly optimized. Standard policy evaluation (routing, basic rate limits) adds < 2ms of latency. Complex policies like synchronous PII redaction or ML-based toxicity checks take slightly longer, but can often run asynchronously."
   },
   {
-    q: "Can I deploy GuardrailX on my own infrastructure?",
-    a: "Yes. GuardrailX is available as a managed SaaS or as a Docker container you can deploy in your own VPC (AWS, GCP, Azure). This ensures your data never leaves your environment."
+    q: "Can I deploy Aegis on my own infrastructure?",
+    a: "Yes. Aegis is available as a managed SaaS or as a Docker container you can deploy in your own VPC (AWS, GCP, Azure). This ensures your data never leaves your environment."
   },
   {
     q: "Which LLM providers do you support?",

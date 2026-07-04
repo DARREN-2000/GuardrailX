@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: guardrailx-frontend
+  name: aegis-frontend
 spec:
   type: ClusterIP
   selector:
-    app: guardrailx-frontend
+    app: aegis-frontend
   ports:
     - protocol: TCP
       port: 80

@@ -1,16 +1,16 @@
-# GuardrailX Analysis
+# Aegis Analysis
 
 ## Product Summary
-GuardrailX is an enterprise-grade AI governance runtime designed to secure, monitor, and enforce policies on LLM workloads. It acts as a middleware layer between enterprise applications and LLM providers (OpenAI, Ollama, vLLM), executing policy-as-code to detect prompt injection, prevent jailbreaks, redact PII, filter unsafe content, and assess hallucination risk. Built with a scalable FastAPI backend, a React/TypeScript frontend for operational management, and deep observability via OpenTelemetry, it enables organizations to safely deploy GenAI applications while maintaining strict compliance and auditability.
+Aegis is an enterprise-grade AI governance runtime designed to secure, monitor, and enforce policies on LLM workloads. It acts as a middleware layer between enterprise applications and LLM providers (OpenAI, Ollama, vLLM), executing policy-as-code to detect prompt injection, prevent jailbreaks, redact PII, filter unsafe content, and assess hallucination risk. Built with a scalable FastAPI backend, a React/TypeScript frontend for operational management, and deep observability via OpenTelemetry, it enables organizations to safely deploy GenAI applications while maintaining strict compliance and auditability.
 
 ## Elevator Pitch
-As enterprises rush to deploy LLMs in production, they are hitting a massive roadblock: security and compliance. LLMs are notoriously vulnerable to prompt injections, data leakage, and hallucinations. GuardrailX is a zero-trust AI governance platform that intercepts every prompt and completion, running them through a strict policy engine. It gives engineering, security, and legal teams the granular control, auditability, and observability they need to put generative AI into production safely, without slowing down development.
+As enterprises rush to deploy LLMs in production, they are hitting a massive roadblock: security and compliance. LLMs are notoriously vulnerable to prompt injections, data leakage, and hallucinations. Aegis is a zero-trust AI governance platform that intercepts every prompt and completion, running them through a strict policy engine. It gives engineering, security, and legal teams the granular control, auditability, and observability they need to put generative AI into production safely, without slowing down development.
 
 ## One-sentence Value Proposition
-GuardrailX provides enterprise developers with a drop-in governance runtime to secure, audit, and route LLM traffic without sacrificing latency or agility.
+Aegis provides enterprise developers with a drop-in governance runtime to secure, audit, and route LLM traffic without sacrificing latency or agility.
 
 ## Three-sentence Product Story
-For developers, building with LLMs is easy, but making them enterprise-ready is a nightmare of compliance, security risks, and unpredictable behavior. GuardrailX was built to solve this by decoupling safety logic from application logic, providing a centralized policy engine that enforces guardrails across all AI endpoints. By giving security teams a transparent audit trail and engineers a frictionless API, GuardrailX bridges the gap between fast iteration and enterprise-grade reliability.
+For developers, building with LLMs is easy, but making them enterprise-ready is a nightmare of compliance, security risks, and unpredictable behavior. Aegis was built to solve this by decoupling safety logic from application logic, providing a centralized policy engine that enforces guardrails across all AI endpoints. By giving security teams a transparent audit trail and engineers a frictionless API, Aegis bridges the gap between fast iteration and enterprise-grade reliability.
 
 ## Target Audience
 - **Primary Users:** Staff/Principal Software Engineers, AI/MLOps Engineers integrating LLMs into enterprise applications.
@@ -25,7 +25,7 @@ For developers, building with LLMs is easy, but making them enterprise-ready is 
 - **Indirect Competitors:** LangChain (has some built-in safety features), Cloudflare AI Gateway, OpenAI's native moderation API.
 - **Open-source Alternatives:** Llama Guard, NeMo Guardrails (OSS version), Giskard.
 - **Commercial Alternatives:** Scale AI's enterprise offerings, robust MLOps platforms like Databricks (adding LLM guardrails).
-- **How it compares:** GuardrailX positions itself closer to application logic than pure API gateways, offering policy-as-code. It aims to be more developer-friendly than clunky enterprise compliance tools while being more robust than simple prompt-wrapper scripts.
+- **How it compares:** Aegis positions itself closer to application logic than pure API gateways, offering policy-as-code. It aims to be more developer-friendly than clunky enterprise compliance tools while being more robust than simple prompt-wrapper scripts.
 - **Where it wins:** Strong architectural foundation (FastAPI, React, OpenTelemetry out of the box). Developer-first ergonomics combined with enterprise features (multi-tenancy, granular audit logs).
 - **Where it loses:** Requires managing infrastructure vs. a fully managed SaaS. Established players have massive datasets of prompt injections to train their classifiers, which a new open-source/startup project lacks on day one.
 
@@ -71,7 +71,7 @@ For developers, building with LLMs is easy, but making them enterprise-ready is 
 
 ## Product Positioning
 - **If this were a startup:** Position it as the "Palo Alto Networks for the LLM era." It is the indispensable security and routing layer that sits in front of all generative AI traffic.
-- **Homepage:** "Deploy AI with Confidence. The open-source governance runtime to secure, audit, and control your LLM applications." It would feature a split-screen showing a vulnerability (prompt injection) on the left, and GuardrailX blocking it instantly with policy-as-code on the right.
+- **Homepage:** "Deploy AI with Confidence. The open-source governance runtime to secure, audit, and control your LLM applications." It would feature a split-screen showing a vulnerability (prompt injection) on the left, and Aegis blocking it instantly with policy-as-code on the right.
 - **Investor takeaway:** "They are building the security infrastructure layer for the Generative AI gold rush. Even if model providers change, enterprises will always need an independent governance layer."
 
 ## Improvements Before Launch

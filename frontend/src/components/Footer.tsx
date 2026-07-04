@@ -11,7 +11,7 @@ export default function Footer() {
               <div className="flex h-7 w-7 items-center justify-center rounded bg-primary/10 text-primary ring-1 ring-primary/20">
                 <Shield className="h-4 w-4" />
               </div>
-              <span className="font-display font-medium tracking-tight text-lg">GuardrailX</span>
+              <span className="font-display font-medium tracking-tight text-lg">Aegis</span>
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
               The policy-driven AI governance runtime. Secure every prompt, route every model, and keep every decision auditable.
@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-border/40 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} GuardrailX Inc. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Aegis Inc. All rights reserved.</p>
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-green-500"></span>
             <span>All systems operational</span>

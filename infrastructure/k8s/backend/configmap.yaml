@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: guardrailx-backend-config
+  name: aegis-backend-config
 data:
-  APP_NAME: "GuardrailX"
+  APP_NAME: "Aegis"
   ENVIRONMENT: "production"
   OTEL_ENABLED: "false"
-  MLFLOW_TRACKING_URI: "http://guardrailx-mlflow:5000"
+  MLFLOW_TRACKING_URI: "http://aegis-mlflow:5000"

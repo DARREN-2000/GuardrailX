@@ -1,3 +1,3 @@
 # Frontend
 
-React + TypeScript UI for GuardrailX operational workflows, policy management, reporting, and review experiences.
+React + TypeScript UI for Aegis operational workflows, policy management, reporting, and review experiences.
