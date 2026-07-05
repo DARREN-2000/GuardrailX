@@ -1,0 +1,14 @@
+# These owners will be the default reviewers for pull requests in these directories.
+
+# Global default owner
+*       @DARREN-2000
+
+# Backend core
+/backend/       @DARREN-2000
+
+# Frontend core
+/frontend/      @DARREN-2000
+
+# Documentation
+/docs/          @DARREN-2000
+README.md       @DARREN-2000

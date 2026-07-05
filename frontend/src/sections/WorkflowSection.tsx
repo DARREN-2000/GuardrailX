@@ -27,7 +27,7 @@ rules:
     condition: cost > 0.01
     fallback: claude-3-haiku`}
                  </pre>
-                 <p className="text-emerald-400 mt-4">$ aegis apply -f policy.yaml</p>
+                 <p className="text-emerald-400 mt-4">$ guardrailx apply -f policy.yaml</p>
                  <p className="text-zinc-300">✓ Policy 'enterprise-strict' applied successfully.</p>
                  <span className="inline-block w-2 h-4 bg-zinc-400 animate-pulse mt-2" />
                </div>
