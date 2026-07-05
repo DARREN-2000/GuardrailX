@@ -33,10 +33,10 @@ export default function DeveloperExperienceSection() {
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   // 1. Point to GuardrailX proxy
-  baseURL: "https://aegis.your-domain.com/v1",
+  baseURL: "https://guardrailx.your-domain.com/v1",
   defaultHeaders: {
     // 2. Pass your GuardrailX token
-    "x-aegis-token": process.env.AEGIS_TOKEN
+    "x-guardrailx-token": process.env.GUARDRAILX_TOKEN
   }
 });
 

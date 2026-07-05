@@ -1,17 +1,31 @@
-# API
+# API Reference
 
-This document details the backend APIs available in GuardrailX.
+The primary interface for GuardrailX is a RESTful API powered by FastAPI.
+
+For full, interactive API documentation, run the backend server and navigate to `/docs` (Swagger UI) or `/redoc` (ReDoc).
 
 ## Core Endpoints
 
-* `GET /api/v1/health/live`: Healthcheck endpoint indicating if the server is running.
-* `GET /api/v1/health/ready`: Checks if dependencies (like PostgreSQL) are connected.
-* `GET /api/v1/tenants/{tenant_id}/providers`: Lists all available LLM providers configured for a tenant.
-* `GET /api/v1/tenants/{tenant_id}/providers/default`: Retrieves the configured default provider.
-* `POST /api/v1/tenants/{tenant_id}/providers/route`: Invokes the provider routing logic to pick the best provider based on `routing_priority`, `is_default`, and `enabled` statuses.
-* `POST /api/v1/policies`: Creates a new policy logic.
-* `GET /api/v1/policies`: Lists all configured policies.
+### `POST /api/v1/guardrails/evaluate`
+Evaluates a prompt against active guardrails.
 
-## Integration
+**Request:**
+```json
+{
+  "text": "The prompt to evaluate",
+  "tenant_id": "tenant-uuid"
+}
+```
 
-GuardrailX's endpoints are built using FastAPI and are fully documented automatically via Swagger UI. Once the backend is running, navigate to `http://localhost:8000/docs` to see the complete, interactive OpenAPI schema.
+**Response (Success/Redacted):**
+```json
+{
+  "action": "allow",
+  "processed_text": "The prompt with [REDACTED] information.",
+  "risk_score": 0.1
+}
+```
+
+### `POST /api/v1/chat/completions` (Routing)
+*(Implementation pending - see Roadmap)*
+Acts as a drop-in replacement for standard OpenAI client libraries.

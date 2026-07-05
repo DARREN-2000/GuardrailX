@@ -51,11 +51,6 @@ For developers, building with LLMs is easy, but making them enterprise-ready is 
 - Open-source fragmentation making it hard to establish a standard.
 
 ## Brand Recommendations
-- **Evaluate current name:** "GuardrailX" is descriptive but feels slightly generic and dated (the "X" suffix is very Web 2.0 / early 2010s). It sounds more like an internal corporate project than a breakout startup.
-- **Rename Suggestions:**
-  1. Aegis AI
-  2. PromptSafe
-  3. ValidatOS
   4. TensorGate
   5. ProxyLumina
   6. SentinalRun
@@ -83,7 +78,6 @@ For developers, building with LLMs is easy, but making them enterprise-ready is 
   - Create a "Quick Test" playground in the frontend where users can type a malicious prompt and see the guardrail block it in real-time.
 - **Messaging:**
   - Clarify whether policies are evaluated via regex/heuristics, smaller local models (like Llama Guard), or calls to external APIs.
-  - Drop the "X" from the name before building brand equity.
 - **Documentation:** Provide a robust "Why we built this" manifesto, contrasting it with LangChain and native API features.
 
 ## Overall Rating

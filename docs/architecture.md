@@ -1,17 +1,30 @@
-# Architecture
+# Architecture Overview
 
-GuardrailX is designed as a secure, fast, and modular proxy layer sitting between enterprise applications and Large Language Model (LLM) providers like OpenAI and Anthropic.
+GuardrailX operates as a high-performance proxy between your enterprise applications and your LLM providers.
 
-## Technology Stack
+## Component Flow
 
-* **Backend:** Built with Python and FastAPI for high-throughput, async IO operations.
-* **Database:** PostgreSQL is used as the primary data store, using SQLAlchemy (async) and Alembic for migrations.
-* **Frontend:** Built with React 19, TypeScript, and Vite, utilizing Tailwind CSS for styling.
-* **Observability:** Metrics, traces, and policy evaluation decisions are recorded using OpenTelemetry and logged to MLflow (for MLOps tracking).
+```mermaid
+graph TD
+    App[Enterprise App] -->|Request| Gateway[API Gateway (FastAPI)]
 
-## Proxy Flow
+    subgraph GuardrailX Engine
+        Gateway --> Resolve[Tenant & Policy Resolution]
+        Resolve --> Execution[Policy Execution Engine]
 
-1. An application request is routed through GuardrailX.
-2. The `PolicyEngine` intercepts the request and runs heuristics (such as PII Redaction and Prompt Injection detection).
-3. The `ProviderRouter` determines the most suitable destination model based on priority and health.
-4. The request is forwarded to the external API, and the response is logged and returned to the application.
+        Execution --> G1[PII Guardrail]
+        Execution --> G2[Injection Guardrail]
+        Execution --> G3[Safety Guardrail]
+    end
+
+    Execution -->|Pass/Redact| Router[Provider Router]
+    Execution -.->|Block| Deny[Error Response]
+
+    Router --> Provider[LLM Provider]
+    Provider -->|Response| Gateway
+    Gateway --> App
+```
+
+## Scalability
+
+The backend is built on **FastAPI** leveraging async Python. The policy engine evaluates all active guardrails concurrently using `asyncio.gather`, ensuring that the latency added to any request is only as slow as the single slowest guardrail check.

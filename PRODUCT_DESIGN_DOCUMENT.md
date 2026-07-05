@@ -4,19 +4,16 @@ This document outlines the product design, branding, messaging, information arch
 
 ## Part 1: Product Brand
 
-**Evaluation of Current Name:** "GuardrailX" sounds slightly generic and technical. While accurate, it lacks the premium, high-trust feel of companies like Linear or Vercel.
 
-**Proposed Name:** **Aegis** (Alternatively: **Sentinel**, **Nexus**, **Cipher**)
-*Let's proceed with **Aegis** for this blueprint.*
 
 **Tagline:** The trust layer for enterprise AI.
-**Elevator Pitch:** Aegis is the deterministic security gateway for non-deterministic AI. We provide real-time policy enforcement, PII redaction, and total observability, enabling enterprises to deploy Large Language Models safely without sacrificing milliseconds.
+**Elevator Pitch:** GuardrailX is the deterministic security gateway for non-deterministic AI. We provide real-time policy enforcement, PII redaction, and total observability, enabling enterprises to deploy Large Language Models safely without sacrificing milliseconds.
 
-**One Sentence:** Aegis provides the enterprise governance and security infrastructure required to deploy AI safely at scale.
+**One Sentence:** GuardrailX provides the enterprise governance and security infrastructure required to deploy AI safely at scale.
 
 **Three Sentence Story:**
 1. Enterprises are rushing to deploy AI, but non-deterministic models introduce unprecedented security, compliance, and privacy risks.
-2. Aegis acts as a real-time proxy between your applications and LLM providers, enforcing strict policies, redacting sensitive data, and providing deep observability.
+2. GuardrailX acts as a real-time proxy between your applications and LLM providers, enforcing strict policies, redacting sensitive data, and providing deep observability.
 3. We give engineering and security teams the confidence to ship AI products fast, knowing their data is protected and their models are behaving predictably.
 
 **Brand Personality:**
@@ -35,19 +32,19 @@ This document outlines the product design, branding, messaging, information arch
 *   **Purpose:** Instant understanding of value proposition. High conversion intent.
 *   **Headline:** The trust layer for enterprise AI.
 *   **Copy Direction:** Crisp, technical, focused on latency and security.
-*   **Visual Idea:** A high-fidelity, animated code snippet showing a request passing through the Aegis proxy, with a policy check succeeding in under 2ms.
+*   **Visual Idea:** A high-fidelity, animated code snippet showing a request passing through the GuardrailX proxy, with a policy check succeeding in under 2ms.
 
 **2. Problem**
 *   **Purpose:** Agitate the pain point of non-deterministic LLMs.
 *   **Headline:** AI is non-deterministic. Your security can't be.
 *   **Copy Direction:** Focus on prompt injections, data leaks, and compliance violations.
-*   **Visual Idea:** A split-screen graphic: left side shows chaotic, unpredictable LLM outputs; right side shows clean, structured, compliant outputs routed through Aegis.
+*   **Visual Idea:** A split-screen graphic: left side shows chaotic, unpredictable LLM outputs; right side shows clean, structured, compliant outputs routed through GuardrailX.
 
 **3. Solution (Architecture)**
 *   **Purpose:** Show exactly where we sit in the stack.
 *   **Headline:** Plugs into your existing workflow.
 *   **Copy Direction:** Native integration with OpenAI, Anthropic, LangChain. No code changes required.
-*   **Visual Idea:** A sleek, animated architecture diagram showing requests flowing from App -> Aegis -> LLM Provider.
+*   **Visual Idea:** A sleek, animated architecture diagram showing requests flowing from App -> GuardrailX -> LLM Provider.
 
 **4. Features (Bento Box)**
 *   **Purpose:** Highlight key capabilities quickly.
@@ -59,7 +56,7 @@ This document outlines the product design, branding, messaging, information arch
 *   **Purpose:** Address the primary objection: "Will this slow down my app?"
 *   **Headline:** Built for scale. Engineered for latency.
 *   **Copy Direction:** Emphasize Rust/FastAPI backend, async architecture, sub-millisecond overhead.
-*   **Visual Idea:** A live-updating latency graph comparing Direct LLM vs. LLM + Aegis.
+*   **Visual Idea:** A live-updating latency graph comparing Direct LLM vs. LLM + GuardrailX.
 
 **6. Enterprise Security**
 *   **Purpose:** Check the boxes for infosec and compliance teams.
@@ -101,7 +98,7 @@ This document outlines the product design, branding, messaging, information arch
 The trust layer for enterprise AI.
 
 **Supporting Paragraph:**
-Aegis is the enterprise gateway for Large Language Models. Prevent prompt injections, enforce real-time PII redaction, and gain total observability—without sacrificing milliseconds.
+GuardrailX is the enterprise gateway for Large Language Models. Prevent prompt injections, enforce real-time PII redaction, and gain total observability—without sacrificing milliseconds.
 
 **Primary CTA:**
 `Start Building` (Solid background, high contrast)
@@ -182,7 +179,7 @@ Aegis is the enterprise gateway for Large Language Models. Prevent prompt inject
 
 8.  **VPC Deployment**
     *   **Title:** Bring Your Own Cloud
-    *   **Description:** Deploy Aegis inside your own infrastructure for maximum control.
+    *   **Description:** Deploy GuardrailX inside your own infrastructure for maximum control.
     *   **Business Value:** Meet the strictest enterprise security requirements.
     *   **Technical Value:** Helm charts, Terraform providers, Docker images.
     *   **Suggested Icon:** Server/Cloud-lock.
@@ -258,12 +255,12 @@ Aegis is the enterprise gateway for Large Language Models. Prevent prompt inject
 ## Part 9: Social Proof
 
 *   **Metrics:** "Securing 10M+ prompts daily," "Average added latency: 1.2ms."
-*   **Benchmarks:** A small, credible chart comparing Aegis proxy latency against direct API calls.
+*   **Benchmarks:** A small, credible chart comparing GuardrailX proxy latency against direct API calls.
 *   **Badges:** SOC2 Type II, HIPAA Compliant, GDPR Ready (even if aspirational, show where we are heading).
 *   **GitHub Stars:** "Join 5,000+ developers on GitHub" (with a live star counter).
 *   **Technology Logos:** Integrates with: OpenAI, Anthropic, Datadog, LangChain, Vercel, AWS.
 *   **Testimonials Structure:**
-    *   "Aegis solved our biggest blocker for enterprise adoption." - CTO, [Fintech Startup]
+    *   "GuardrailX solved our biggest blocker for enterprise adoption." - CTO, [Fintech Startup]
     *   "We integrated it in an afternoon. The observability is incredible." - Lead Engineer, [AI SaaS]
 
 ---
@@ -274,7 +271,7 @@ Aegis is the enterprise gateway for Large Language Models. Prevent prompt inject
 *   **GIFs / Videos:**
     *   A 5-second loop showing a prompt injection being blocked in real-time.
     *   A quick screen recording of changing a policy and seeing it take effect instantly.
-*   **CLI Demos:** An animated terminal SVG (using TermAsciinema or similar) showing the `aegis init` process.
+*   **CLI Demos:** An animated terminal SVG (using TermAsciinema or similar) showing the `guardrailx init` process.
 *   **Architecture Diagrams:** Clean, vector-based flowcharts.
 *   **Animated SVGs:** The hero graphic (data flowing through a proxy).
 *   **Icons:** Custom-styled Lucide icons for the bento grid.
